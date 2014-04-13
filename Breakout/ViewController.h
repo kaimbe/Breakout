@@ -18,10 +18,4 @@
     CGSize screen_size;
 }
 
-@property (strong, nonatomic) EAGLContext *context;
-
-- (void)setupGL;
-- (void)tearDownGL;
-- (void)setupOrthographicView;
-
 @end

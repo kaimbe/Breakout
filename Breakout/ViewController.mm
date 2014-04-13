@@ -17,6 +17,16 @@
 #import "GLDraw.h"
 #import "RGBColor.h"
 
+@interface ViewController () {
+}
+@property (strong, nonatomic) EAGLContext *context;
+
+- (void)setupGL;
+- (void)tearDownGL;
+- (void)setupOrthographicView;
+
+@end
+
 @implementation ViewController
 {
     Mediator *theMediator;
