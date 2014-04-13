@@ -77,7 +77,7 @@
 		BF6E094C18FAF1A700F78067 /* MotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E093918FAF1A700F78067 /* MotionController.m */; };
 		BF6E094D18FAF1A700F78067 /* Paddle.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E093B18FAF1A700F78067 /* Paddle.m */; };
 		BF6E094E18FAF1A700F78067 /* PhysicsController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF6E093D18FAF1A700F78067 /* PhysicsController.mm */; };
-		BF6E094F18FAF1A700F78067 /* MyRGBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E093F18FAF1A700F78067 /* MyRGBColor.m */; };
+		BF6E094F18FAF1A700F78067 /* RGBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E093F18FAF1A700F78067 /* RGBColor.m */; };
 		BF6E095118FAF1A700F78067 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF6E094318FAF1A700F78067 /* ViewController.mm */; };
 		BF6E09EB18FAF21700F78067 /* BreakoutAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E09EA18FAF21700F78067 /* BreakoutAppDelegate.m */; };
 		BF6E09ED18FAF37000F78067 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E09EC18FAF37000F78067 /* CoreMotion.framework */; };
@@ -231,8 +231,8 @@
 		BF6E093B18FAF1A700F78067 /* Paddle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paddle.m; sourceTree = "<group>"; };
 		BF6E093C18FAF1A700F78067 /* PhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsController.h; sourceTree = "<group>"; };
 		BF6E093D18FAF1A700F78067 /* PhysicsController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsController.mm; sourceTree = "<group>"; };
-		BF6E093E18FAF1A700F78067 /* MyRGBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRGBColor.h; sourceTree = "<group>"; };
-		BF6E093F18FAF1A700F78067 /* MyRGBColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRGBColor.m; sourceTree = "<group>"; };
+		BF6E093E18FAF1A700F78067 /* RGBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBColor.h; sourceTree = "<group>"; };
+		BF6E093F18FAF1A700F78067 /* RGBColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBColor.m; sourceTree = "<group>"; };
 		BF6E094218FAF1A700F78067 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BF6E094318FAF1A700F78067 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		BF6E09E918FAF21700F78067 /* BreakoutAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreakoutAppDelegate.h; sourceTree = "<group>"; };
@@ -481,8 +481,8 @@
 				BF6E093118FAF1A700F78067 /* GLDraw.m */,
 				BF6E093618FAF1A700F78067 /* Mediator.h */,
 				BF6E093718FAF1A700F78067 /* Mediator.mm */,
-				BF6E093E18FAF1A700F78067 /* MyRGBColor.h */,
-				BF6E093F18FAF1A700F78067 /* MyRGBColor.m */,
+				BF6E093E18FAF1A700F78067 /* RGBColor.h */,
+				BF6E093F18FAF1A700F78067 /* RGBColor.m */,
 				BF6E090A18FAEF6200F78067 /* Images.xcassets */,
 				BF6E08FF18FAEF6200F78067 /* Supporting Files */,
 			);
@@ -698,7 +698,7 @@
 				BF35E1ED18FB12ED00E698AA /* b2CircleContact.cpp in Sources */,
 				BF35E1F318FB12ED00E698AA /* b2PolygonContact.cpp in Sources */,
 				BF6E094818FAF1A700F78067 /* GLDraw.m in Sources */,
-				BF6E094F18FAF1A700F78067 /* MyRGBColor.m in Sources */,
+				BF6E094F18FAF1A700F78067 /* RGBColor.m in Sources */,
 				BF6E094918FAF1A700F78067 /* Level.m in Sources */,
 				BF35E1EC18FB12ED00E698AA /* b2ChainAndPolygonContact.cpp in Sources */,
 				BF35E1E618FB12ED00E698AA /* b2ContactManager.cpp in Sources */,

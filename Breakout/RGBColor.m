@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "MyRGBColor.h"
+#import "RGBColor.h"
 #import "Constants.h"
 
-@implementation MyRGBColor
+@implementation RGBColor
 
 - (id)initWithRed:(GLfloat)red green:(GLfloat)green blue:(GLfloat)blue alpha:(GLfloat)alpha
 {

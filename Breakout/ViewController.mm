@@ -15,7 +15,7 @@
 #import "Paddle.h"
 #import "MyBlock.h"
 #import "GLDraw.h"
-#import "MyRGBColor.h"
+#import "RGBColor.h"
 
 @implementation ViewController
 {

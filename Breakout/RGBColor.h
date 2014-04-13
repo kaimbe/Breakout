@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-@interface MyRGBColor : NSObject
+@interface RGBColor : NSObject
 
 @property GLfloat red;
 @property GLfloat green;

@@ -15,7 +15,7 @@
 #import "Level.h"
 #import "Level0.h"
 
-#import "MyRGBColor.h"
+#import "RGBColor.h"
 #import "Constants.h"
 
 @implementation GameController
@@ -35,8 +35,8 @@
 {
     CGPoint ball_start_point = CGPointMake(_screen_size.width/2, _screen_size.height/2);
     
-    MyRGBColor *blue = [[MyRGBColor alloc] initWithRed:255.0f green:118.0f blue:0.0f alpha:255.0f];
-    MyRGBColor *lightGrey = [[MyRGBColor alloc] initWithRed:220.0f green:220.0f blue:220.0f alpha:255.0f];
+    RGBColor *blue = [[RGBColor alloc] initWithRed:255.0f green:118.0f blue:0.0f alpha:255.0f];
+    RGBColor *lightGrey = [[RGBColor alloc] initWithRed:220.0f green:220.0f blue:220.0f alpha:255.0f];
     
     _currentBall = [[Ball alloc] initWithRadius: 0.2f*PTM_RATIO position:ball_start_point color:blue];
     [_theMediator setCurrentBall:_currentBall];

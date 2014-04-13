@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-@class MyRGBColor;
+@class RGBColor;
 
 @interface Paddle : NSObject
 
 @property CGPoint position;
-@property MyRGBColor* color;
+@property RGBColor* color;
 @property CGSize size;
 
 - (id)initWithSize:(CGSize)size;

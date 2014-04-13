@@ -10,7 +10,7 @@
 
 @implementation Ball
 
-- (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(MyRGBColor*)color {
+- (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(RGBColor*)color {
     [self setRadius: radius];
     [self setPosition: position];
     [self setColor: color];
