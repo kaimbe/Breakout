@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF35E16218FB0DB500E698AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E08F818FAEF6200F78067 /* Foundation.framework */; };
 		BF35E16318FB0DC400E698AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E08FC18FAEF6200F78067 /* UIKit.framework */; };
-		BF35E16918FB0F6400E698AA /* MyBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = BF35E16818FB0F6400E698AA /* MyBlock.m */; };
+		BF35E16918FB0F6400E698AA /* GameBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = BF35E16818FB0F6400E698AA /* GameBlock.m */; };
 		BF35E1D118FB12ED00E698AA /* Box2DConfig.cmake in Resources */ = {isa = PBXBuildFile; fileRef = BF35E16C18FB12ED00E698AA /* Box2DConfig.cmake */; };
 		BF35E1D218FB12ED00E698AA /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF35E16D18FB12ED00E698AA /* CMakeLists.txt */; };
 		BF35E1D318FB12ED00E698AA /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF35E16F18FB12ED00E698AA /* b2BroadPhase.cpp */; };
@@ -100,8 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF35E16718FB0F6400E698AA /* MyBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBlock.h; sourceTree = "<group>"; };
-		BF35E16818FB0F6400E698AA /* MyBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBlock.m; sourceTree = "<group>"; };
+		BF35E16718FB0F6400E698AA /* GameBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBlock.h; sourceTree = "<group>"; };
+		BF35E16818FB0F6400E698AA /* GameBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBlock.m; sourceTree = "<group>"; };
 		BF35E16B18FB12ED00E698AA /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		BF35E16C18FB12ED00E698AA /* Box2DConfig.cmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Box2DConfig.cmake; sourceTree = "<group>"; };
 		BF35E16D18FB12ED00E698AA /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -530,8 +530,8 @@
 				BF6E092818FAF1A700F78067 /* Ball.m */,
 				BF6E093A18FAF1A700F78067 /* Paddle.h */,
 				BF6E093B18FAF1A700F78067 /* Paddle.m */,
-				BF35E16718FB0F6400E698AA /* MyBlock.h */,
-				BF35E16818FB0F6400E698AA /* MyBlock.m */,
+				BF35E16718FB0F6400E698AA /* GameBlock.h */,
+				BF35E16818FB0F6400E698AA /* GameBlock.m */,
 				BF95185B18FB1DD200C719B5 /* Sprite.h */,
 				BF95185C18FB1DD200C719B5 /* Sprite.m */,
 			);
@@ -670,7 +670,7 @@
 				BF35E1E818FB12ED00E698AA /* b2Island.cpp in Sources */,
 				BF35E1EB18FB12ED00E698AA /* b2ChainAndCircleContact.cpp in Sources */,
 				BF35E1EA18FB12ED00E698AA /* b2WorldCallbacks.cpp in Sources */,
-				BF35E16918FB0F6400E698AA /* MyBlock.m in Sources */,
+				BF35E16918FB0F6400E698AA /* GameBlock.m in Sources */,
 				BF35E1DD18FB12ED00E698AA /* b2EdgeShape.cpp in Sources */,
 				BF35E1DF18FB12ED00E698AA /* b2BlockAllocator.cpp in Sources */,
 				BF6E094E18FAF1A700F78067 /* PhysicsController.mm in Sources */,

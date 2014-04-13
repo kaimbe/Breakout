@@ -9,7 +9,7 @@
 #import "Level0.h"
 
 #import "RGBColor.h"
-#import "MyBlock.h"
+#import "GameBlock.h"
 
 @implementation Level0
 
@@ -37,7 +37,7 @@
         RGBColor *rowColor = [[self rowColors] objectAtIndex:yPos];
         int rowScoreValue = powf(2.0f, numberOfRows - yPos);
         for(int xPos = 0; xPos < numberOfBlocksPerRow; xPos++) {
-            MyBlock *currentBlock = [[MyBlock alloc] initWithSize:CGSizeMake(self.screenSize.width/numberOfBlocksPerRow, brickHeight)];
+            GameBlock *currentBlock = [[GameBlock alloc] initWithSize:CGSizeMake(self.screenSize.width/numberOfBlocksPerRow, brickHeight)];
             [currentBlock setColor:rowColor];
             [currentBlock setScoreValue:rowScoreValue];
             CGFloat xOffset = ((self.screenSize.width/numberOfBlocksPerRow)/2)+(xPos*(self.screenSize.width/numberOfBlocksPerRow));

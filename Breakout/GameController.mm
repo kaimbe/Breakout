@@ -11,7 +11,7 @@
 
 #import "Ball.h"
 #import "Paddle.h"
-#import "MyBlock.h"
+#import "GameBlock.h"
 #import "Level.h"
 #import "Level0.h"
 
@@ -72,7 +72,7 @@
     [_theMediator setBlocks:_blocks];
     
     for (int i = 0; i < [_blocks count]; i++) {
-        MyBlock *temp = [_blocks objectAtIndex:i];
+        GameBlock *temp = [_blocks objectAtIndex:i];
         [_theMediator createBlockAtPosition:[temp position] width:[temp size].width height:[temp size].height];
     }
     
@@ -87,7 +87,7 @@
     //NSLog(@"removeBlockAtPosition X:%f Y:%f", xPos, yPos);
     
     for (int i = 0; i < [_blocks count]; i++) {
-        MyBlock *temp = [_blocks objectAtIndex:i];
+        GameBlock *temp = [_blocks objectAtIndex:i];
         //NSLog(@"temp %f %f", temp.position.x, temp.position.y);
         if ([temp position].x == xPos && [temp position].y == yPos) {
             [_blocks removeObjectAtIndex:i];

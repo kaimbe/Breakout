@@ -8,7 +8,7 @@
 
 #import "Sprite.h"
 
-@interface MyBlock : Sprite
+@interface GameBlock : Sprite
 
 @property CGSize size;
 @property NSInteger scoreValue;

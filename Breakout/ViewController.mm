@@ -13,7 +13,7 @@
 
 #import "Ball.h"
 #import "Paddle.h"
-#import "MyBlock.h"
+#import "GameBlock.h"
 #import "GLDraw.h"
 #import "RGBColor.h"
 
@@ -151,7 +151,7 @@
     
     // bricks
     for(int i = 0; i < [blocks count]; i++) {
-        MyBlock *currentBlock = (MyBlock *) [blocks objectAtIndex: i];
+        GameBlock *currentBlock = (GameBlock *) [blocks objectAtIndex: i];
         glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
         [GLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
     }

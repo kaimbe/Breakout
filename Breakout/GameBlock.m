@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "MyBlock.h"
+#import "GameBlock.h"
 
-@implementation MyBlock
+@implementation GameBlock
 
 - (id)initWithSize:(CGSize)size
 {
