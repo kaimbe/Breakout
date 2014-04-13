@@ -6,12 +6,10 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-@class RGBColor;
+#import "Sprite.h"
 
-@interface Paddle : NSObject
+@interface Paddle : Sprite
 
-@property CGPoint position;
-@property RGBColor* color;
 @property CGSize size;
 
 - (id)initWithSize:(CGSize)size;

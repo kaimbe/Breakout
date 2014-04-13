@@ -1,5 +1,5 @@
 //
-//  Block.h
+//  Sprite.m
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-13.
@@ -8,11 +8,6 @@
 
 #import "Sprite.h"
 
-@interface MyBlock : Sprite
-
-@property CGSize size;
-@property NSInteger scoreValue;
-
-- (id)initWithSize:(CGSize)size;
+@implementation Sprite
 
 @end
