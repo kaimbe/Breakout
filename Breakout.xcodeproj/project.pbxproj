@@ -472,11 +472,13 @@
 			isa = PBXGroup;
 			children = (
 				BF35E16A18FB12ED00E698AA /* Box2D */,
-				BF90EEF518FAFF00000D3EF2 /* Controllers */,
+				BF90EEF518FAFF00000D3EF2 /* Model */,
 				BF90EEF418FAFED9000D3EF2 /* Levels */,
 				BF90EEF318FAFE98000D3EF2 /* Sprites */,
 				BF6E09E918FAF21700F78067 /* BreakoutAppDelegate.h */,
 				BF6E09EA18FAF21700F78067 /* BreakoutAppDelegate.m */,
+				BF6E094218FAF1A700F78067 /* ViewController.h */,
+				BF6E094318FAF1A700F78067 /* ViewController.mm */,
 				BF6E092B18FAF1A700F78067 /* Constants.h */,
 				BF6E092C18FAF1A700F78067 /* ContactListener.h */,
 				BF6E092D18FAF1A700F78067 /* ContactListener.mm */,
@@ -549,7 +551,7 @@
 			name = Levels;
 			sourceTree = "<group>";
 		};
-		BF90EEF518FAFF00000D3EF2 /* Controllers */ = {
+		BF90EEF518FAFF00000D3EF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				BF6E092E18FAF1A700F78067 /* GameController.h */,
@@ -558,10 +560,8 @@
 				BF6E093918FAF1A700F78067 /* MotionController.m */,
 				BF6E093C18FAF1A700F78067 /* PhysicsController.h */,
 				BF6E093D18FAF1A700F78067 /* PhysicsController.mm */,
-				BF6E094218FAF1A700F78067 /* ViewController.h */,
-				BF6E094318FAF1A700F78067 /* ViewController.mm */,
 			);
-			name = Controllers;
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
