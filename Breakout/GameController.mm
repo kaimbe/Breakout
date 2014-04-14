@@ -28,13 +28,13 @@
     
     _currentScore = 0;
     
-    //_theMediator = [Mediator sharedInstance];
-    
     return self;
 }
 
 - (void)setUpGameController
 {
+    _theMediator = [Mediator sharedInstance];
+    
     CGPoint ball_start_point = CGPointMake(_screen_size.width/2, _screen_size.height/2);
     
     RGBColor *blue = [[RGBColor alloc] initWithRed:255.0f green:118.0f blue:0.0f alpha:255.0f];

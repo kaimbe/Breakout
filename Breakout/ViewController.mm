@@ -37,13 +37,7 @@
     
     screen_size = self.view.bounds.size;
     
-    
-    _theMediator = [[Mediator alloc]init];
-    
-    
-    
-    
-    //_theMediator = [Mediator sharedInstance];
+    _theMediator = [Mediator sharedInstance];
     
     [_theMediator setScreenSize:screen_size];
     [_theMediator setUpPhysicsController];
@@ -146,7 +140,6 @@
         [GLDraw GLDrawCircleAtCenter:[currentBall position] segments:30 circleSize:[currentBall radius] filled:YES];
     }
     
-    
     // bricks
     for(int i = 0; i < [blocks count]; i++) {
         GameBlock *currentBlock = (GameBlock *) [blocks objectAtIndex: i];
@@ -154,7 +147,7 @@
         [GLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
     }
     
-    glColor4f(5, 5, 5, 1);    // paddles
+    // paddles
     for(int i = 0; i < [paddles count]; i++) {
         Paddle *currentPaddle = (Paddle *) [paddles objectAtIndex: i];
         glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);

@@ -29,13 +29,13 @@
     b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
     _world = new b2World(gravity);
     
-    //_theMediator = [Mediator sharedInstance];
-    
     return self;
 }
 
 - (void)setUpPhysicsController
 {
+    _theMediator = [Mediator sharedInstance];
+    
     //NSLog(@"%f", _currentBall.position.x);
     // Create edges around the entire screen
     b2BodyDef groundBodyDef;

@@ -27,8 +27,6 @@
         //view = viewController;
         game = [[GameController alloc] init];
         physics = [[PhysicsController alloc] init];
-        [game setTheMediator:self];
-        [physics setTheMediator:self];
     }
     
     return self;
