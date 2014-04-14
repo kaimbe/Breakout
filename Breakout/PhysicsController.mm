@@ -29,6 +29,8 @@
     b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
     _world = new b2World(gravity);
     
+    //_theMediator = [Mediator sharedInstance];
+    
     return self;
 }
 

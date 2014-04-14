@@ -10,11 +10,26 @@
 
 @implementation Mediator
 
-- (id)initWithViewController:(UIViewController*)viewController gameController:(GameController*)gameController physicsController:(PhysicsController*)physicsController
++ (id)sharedInstance
 {
-    view = viewController;
-    game = gameController;
-    physics = physicsController;
+    static Mediator *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (id)init
+{
+    if (self = [super init])
+    {
+        //view = viewController;
+        game = [[GameController alloc] init];
+        physics = [[PhysicsController alloc] init];
+        [game setTheMediator:self];
+        [physics setTheMediator:self];
+    }
     
     return self;
 }

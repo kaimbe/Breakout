@@ -28,7 +28,8 @@
 @property Ball* currentBall;
 @property Paddle* paddle;
 
-- (id)initWithViewController:(UIViewController*)viewController gameController:(GameController*)gameController physicsController:(PhysicsController*)physicsController;
++ (id)sharedInstance;
+- (id)init;
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;
 - (void)setUpPhysicsController;

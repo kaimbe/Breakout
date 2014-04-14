@@ -37,12 +37,13 @@
     
     screen_size = self.view.bounds.size;
     
-    GameController *game = [[GameController alloc] init];
-    PhysicsController *physics = [[PhysicsController alloc] init];
-    _theMediator = [[Mediator alloc]initWithViewController:self gameController:game physicsController:physics];
     
-    [game setTheMediator:_theMediator];
-    [physics setTheMediator:_theMediator];
+    _theMediator = [[Mediator alloc]init];
+    
+    
+    
+    
+    //_theMediator = [Mediator sharedInstance];
     
     [_theMediator setScreenSize:screen_size];
     [_theMediator setUpPhysicsController];

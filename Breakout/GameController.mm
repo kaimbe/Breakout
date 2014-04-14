@@ -28,6 +28,8 @@
     
     _currentScore = 0;
     
+    //_theMediator = [Mediator sharedInstance];
+    
     return self;
 }
 
