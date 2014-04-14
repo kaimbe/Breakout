@@ -17,20 +17,7 @@
 #import "GLDraw.h"
 #import "RGBColor.h"
 
-@interface ViewController () {
-}
-@property (strong, nonatomic) EAGLContext *context;
-
-- (void)setupGL;
-- (void)tearDownGL;
-- (void)setupOrthographicView;
-
-@end
-
 @implementation ViewController
-{
-    Mediator *theMediator;
-}
 
 - (void)viewDidLoad
 {
@@ -52,18 +39,18 @@
     
     GameController *game = [[GameController alloc] init];
     PhysicsController *physics = [[PhysicsController alloc] init];
-    theMediator = [[Mediator alloc]initWithViewController:self gameController:game physicsController:physics];
+    _theMediator = [[Mediator alloc]initWithViewController:self gameController:game physicsController:physics];
     
-    [game setTheMediator:theMediator];
-    [physics setTheMediator:theMediator];
+    [game setTheMediator:_theMediator];
+    [physics setTheMediator:_theMediator];
     
-    [theMediator setScreenSize:screen_size];
-    [theMediator setUpPhysicsController];
-    [theMediator setUpGameController];
+    [_theMediator setScreenSize:screen_size];
+    [_theMediator setUpPhysicsController];
+    [_theMediator setUpGameController];
 
-    balls = [theMediator balls];
-    paddles = [theMediator paddles];
-    blocks = [theMediator blocks];
+    balls = [_theMediator balls];
+    paddles = [_theMediator paddles];
+    blocks = [_theMediator blocks];
     
     NSLog(@"View Controller Loaded");
     
@@ -129,7 +116,7 @@
     touch_point.y = screen_size.height - touch_point.y;
     touch_point = CGPointMake(touch_point.x, touch_point.y);
     
-    [theMediator touchesBeganPhysics:touch_point];
+    [_theMediator touchesBeganPhysics:touch_point];
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -139,7 +126,7 @@
     touch_point.y = screen_size.height - touch_point.y;
     touch_point = CGPointMake(touch_point.x, touch_point.y);
     
-    [theMediator touchesMovedPhysics:touch_point];
+    [_theMediator touchesMovedPhysics:touch_point];
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods

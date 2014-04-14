@@ -8,6 +8,8 @@
 
 #import <GLKit/GLKit.h>
 
+@class Mediator;
+
 @interface ViewController : GLKViewController {
     GLKTextureInfo *textureInfo;
     
@@ -17,5 +19,13 @@
     
     CGSize screen_size;
 }
+
+@property Mediator *theMediator;
+
+@property (strong, nonatomic) EAGLContext *context;
+
+- (void)setupGL;
+- (void)tearDownGL;
+- (void)setupOrthographicView;
 
 @end
