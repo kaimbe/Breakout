@@ -17,12 +17,17 @@
     NSMutableArray *paddles;
     NSMutableArray *blocks;
     
-    CGSize screen_size;
+    CGSize screenSize;
 }
 
 @property Mediator *theMediator;
 
 @property (strong, nonatomic) EAGLContext *context;
+
+@property (strong, nonatomic) UILabel *scoreLabel;
+@property (strong, nonatomic) UILabel *lifeLabel;
+
+@property CGFloat headerHeight;
 
 - (void)setupGL;
 - (void)tearDownGL;

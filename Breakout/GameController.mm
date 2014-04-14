@@ -26,7 +26,7 @@
     _paddles = [[NSMutableArray alloc] initWithObjects: nil];
     _blocks = [[NSMutableArray alloc] initWithObjects: nil];
     
-    _currentScore = 0;
+    
     
     return self;
 }
@@ -34,6 +34,9 @@
 - (void)setUpGameController
 {
     _theMediator = [Mediator sharedInstance];
+    
+    _currentScore = 0;
+    [_theMediator updateScore];
     
     CGPoint ball_start_point = CGPointMake(_screen_size.width/2, _screen_size.height/2);
     
@@ -70,6 +73,7 @@
     [_currentLevel setUpLevel];
     
     _currentNumberOfLives = [_currentLevel numberOfLives];
+    [_theMediator updateLives];
     
     [_theMediator setBlocks:_blocks];
     
@@ -95,6 +99,7 @@
             [_blocks removeObjectAtIndex:i];
             
             _currentScore += [temp scoreValue];
+            [_theMediator updateScore];
             NSLog(@"Score: %d", _currentScore);
         }
     }
@@ -105,6 +110,7 @@
     if (_currentNumberOfLives != 0)
     {
         _currentNumberOfLives--;
+        [_theMediator updateLives];
         NSLog(@"Number of Lives Remaining: %d", _currentNumberOfLives);
     }
     else if (_currentNumberOfLives == 0)

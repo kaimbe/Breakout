@@ -7,6 +7,7 @@
 //
 
 #import "Mediator.h"
+#import "ViewController.h"
 #import "GameController.h"
 #import "PhysicsController.h"
 #import "MotionController.h"
@@ -27,12 +28,9 @@
 {
     if (self = [super init])
     {
-        //view = viewController;
         game = [[GameController alloc] init];
         physics = [[PhysicsController alloc] init];
-        
         motion = [[MotionController alloc] init];
-        
     }
     
     return self;
@@ -93,4 +91,15 @@
 {
     _accX = accelerationX;
 }
+
+- (void)updateScore
+{
+    [[_view scoreLabel] setText:[NSString stringWithFormat: @"%d", [game currentScore]]];
+}
+
+- (void)updateLives
+{
+    [[_view lifeLabel] setText:[NSString stringWithFormat: @"%d", [game currentNumberOfLives]]];
+}
+
 @end

@@ -42,15 +42,19 @@
     b2FixtureDef groundBoxDef;
     groundBoxDef.shape = &groundBox;
     
+    // bottom
     groundBox.Set(b2Vec2(0,0), b2Vec2(_screenSize.width/PTM_RATIO, 0));
     _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
     
+    // left
     groundBox.Set(b2Vec2(0,0), b2Vec2(0, _screenSize.height/PTM_RATIO));
     _groundBody->CreateFixture(&groundBoxDef);
     
+    // top
     groundBox.Set(b2Vec2(0, _screenSize.height/PTM_RATIO), b2Vec2(_screenSize.width/PTM_RATIO, _screenSize.height/PTM_RATIO));
     _groundBody->CreateFixture(&groundBoxDef);
     
+    // right
     groundBox.Set(b2Vec2(_screenSize.width/PTM_RATIO, _screenSize.height/PTM_RATIO), b2Vec2(_screenSize.width/PTM_RATIO, 0));
     _groundBody->CreateFixture(&groundBoxDef);
     

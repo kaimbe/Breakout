@@ -35,21 +35,40 @@
     
     [self setupGL];
     
-    screen_size = self.view.bounds.size;
+    screenSize = self.view.bounds.size;
     
+    _headerHeight = screenSize.height*0.05f;
+    
+    // life label
+    _lifeLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0f, 0.0f, screenSize.width/2, _headerHeight)];
+    _lifeLabel.textAlignment =  UITextAlignmentCenter;
+    _lifeLabel.textColor = [UIColor whiteColor];
+    _lifeLabel.backgroundColor = [UIColor grayColor];
+    _lifeLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
+    [self.view addSubview:_lifeLabel];
+    _lifeLabel.text = [NSString stringWithFormat: @"%d", 0];
+    
+    // score label
+    _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(screenSize.width/2, 0.0f, screenSize.width/2, _headerHeight)];
+    _scoreLabel.textAlignment =  UITextAlignmentCenter;
+    _scoreLabel.textColor = [UIColor whiteColor];
+    _scoreLabel.backgroundColor = [UIColor grayColor];
+    _scoreLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
+    [self.view addSubview:_scoreLabel];
+    _scoreLabel.text = [NSString stringWithFormat: @"%d", 0];
+
     _theMediator = [Mediator sharedInstance];
-    
-    [_theMediator setScreenSize:screen_size];
+    [_theMediator setView:self];
+    [_theMediator setScreenSize:screenSize];
     [_theMediator setUpPhysicsController];
     [_theMediator setUpGameController];
     [_theMediator setUpMotionController];
-
+    
     balls = [_theMediator balls];
     paddles = [_theMediator paddles];
     blocks = [_theMediator blocks];
     
     NSLog(@"View Controller Loaded");
-    
 }
 
 - (void)dealloc
@@ -97,19 +116,19 @@
 - (void)setupOrthographicView
 {
     // set viewport based on display size
-	glViewport(0, 0, screen_size.width, screen_size.height);
+	glViewport(0, 0, screenSize.width, screenSize.height);
     
 	// set up orthographic projection
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-    glOrthof(0, screen_size.width, 0, screen_size.height, -1.0f, 1.0f);
+    glOrthof(0, screenSize.width, 0, screenSize.height, -1.0f, 1.0f);
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // get the touch point and fix coordinates
     CGPoint touch_point = [[touches anyObject] locationInView:self.view];
-    touch_point.y = screen_size.height - touch_point.y;
+    touch_point.y = screenSize.height - touch_point.y;
     touch_point = CGPointMake(touch_point.x, touch_point.y);
     
     [_theMediator touchesBeganPhysics:touch_point];
@@ -119,7 +138,7 @@
 {
     // get the touch point and fix coordinates
     CGPoint touch_point = [[touches anyObject] locationInView:self.view];
-    touch_point.y = screen_size.height - touch_point.y;
+    touch_point.y = screenSize.height - touch_point.y;
     touch_point = CGPointMake(touch_point.x, touch_point.y);
     
     [_theMediator touchesMovedPhysics:touch_point];

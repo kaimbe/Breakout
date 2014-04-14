@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
+@class ViewController;
 @class GameController;
 @class PhysicsController;
 @class MotionController;
@@ -15,11 +16,12 @@
 
 @interface Mediator : NSObject
 {
-    UIViewController *view;
     GameController *game;
     PhysicsController *physics;
     MotionController *motion;
 }
+
+@property ViewController *view;
 
 @property NSMutableArray* balls;
 @property NSMutableArray* paddles;
@@ -44,5 +46,7 @@
 - (void)looseLife;
 - (void)setUpMotionController;
 - (void)updateAccelerationX:(CGFloat)accelerationX;
+- (void)updateScore;
+- (void)updateLives;
 
 @end
