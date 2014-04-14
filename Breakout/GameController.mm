@@ -69,6 +69,7 @@
     // test with level 0 for now
     _currentLevel = [[Level0 alloc] init];
     [_currentLevel setScreenSize:_screen_size];
+    [_currentLevel setHeaderHeight:[self headerHeight]];
     [_currentLevel setBlocks:_blocks];
     [_currentLevel setUpLevel];
     

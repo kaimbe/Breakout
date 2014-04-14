@@ -39,8 +39,10 @@
 - (void)setUpGameController
 {
     [game setScreen_size:_screenSize];
+    [game setHeaderHeight:[_view headerHeight]];
     [game setUpGameController];
 }
+
 - (void)removeBlockAtPosition:(CGPoint)position
 {
     [game removeBlockAtPosition:position];
@@ -49,6 +51,7 @@
 - (void)setUpPhysicsController
 {
     [physics setScreenSize:_screenSize];
+    [physics setHeaderHeight:[_view headerHeight]];
     [physics setUpPhysicsController];
 }
 
@@ -94,12 +97,12 @@
 
 - (void)updateScore
 {
-    [[_view scoreLabel] setText:[NSString stringWithFormat: @"%d", [game currentScore]]];
+    [[_view scoreLabel] setText:[NSString stringWithFormat: @"Score: %d", [game currentScore]]];
 }
 
 - (void)updateLives
 {
-    [[_view lifeLabel] setText:[NSString stringWithFormat: @"%d", [game currentNumberOfLives]]];
+    [[_view lifeLabel] setText:[NSString stringWithFormat: @"Lives: %d", [game currentNumberOfLives]]];
 }
 
 @end

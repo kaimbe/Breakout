@@ -12,6 +12,7 @@
 @property NSArray* rowColors;
 @property CGSize screenSize;
 @property NSInteger numberOfLives;
+@property CGFloat headerHeight;
 
 - (void)setUpLevel;
 

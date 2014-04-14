@@ -28,6 +28,8 @@
 @property NSInteger currentScore;
 @property NSInteger currentNumberOfLives;
 
+@property CGFloat headerHeight;
+
 - (id)init;
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;

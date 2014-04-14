@@ -33,7 +33,7 @@
     self.numberOfLives = 3;
     
     for (int yPos = 0; yPos < numberOfRows; yPos++) {
-        CGFloat yOffset = self.screenSize.height - (brickHeight/2 + yPos*brickHeight);
+        CGFloat yOffset = (self.screenSize.height - self.headerHeight) - (brickHeight/2 + yPos*brickHeight);
         RGBColor *rowColor = [[self rowColors] objectAtIndex:yPos];
         int rowScoreValue = powf(2.0f, numberOfRows - yPos);
         for(int xPos = 0; xPos < numberOfBlocksPerRow; xPos++) {

@@ -27,6 +27,7 @@
 
 @property Mediator *theMediator;
 @property CGSize screenSize;
+@property CGFloat headerHeight;
 
 - (id)init;
 - (void)setUpPhysicsController;

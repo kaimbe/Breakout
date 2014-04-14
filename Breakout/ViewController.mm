@@ -46,7 +46,6 @@
     _lifeLabel.backgroundColor = [UIColor grayColor];
     _lifeLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
     [self.view addSubview:_lifeLabel];
-    _lifeLabel.text = [NSString stringWithFormat: @"%d", 0];
     
     // score label
     _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(screenSize.width/2, 0.0f, screenSize.width/2, _headerHeight)];
@@ -55,8 +54,7 @@
     _scoreLabel.backgroundColor = [UIColor grayColor];
     _scoreLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
     [self.view addSubview:_scoreLabel];
-    _scoreLabel.text = [NSString stringWithFormat: @"%d", 0];
-
+    
     _theMediator = [Mediator sharedInstance];
     [_theMediator setView:self];
     [_theMediator setScreenSize:screenSize];
