@@ -42,6 +42,7 @@
     [_theMediator setScreenSize:screen_size];
     [_theMediator setUpPhysicsController];
     [_theMediator setUpGameController];
+    [_theMediator setUpMotionController];
 
     balls = [_theMediator balls];
     paddles = [_theMediator paddles];

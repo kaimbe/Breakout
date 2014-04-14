@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "GameController.h"
-#import "PhysicsController.h"
-#import "ViewController.h"
+@class GameController;
+@class PhysicsController;
+@class MotionController;
 
 @class Ball;
 @class Paddle;
@@ -18,6 +18,7 @@
     UIViewController *view;
     GameController *game;
     PhysicsController *physics;
+    MotionController *motion;
 }
 
 @property NSMutableArray* balls;
@@ -27,6 +28,8 @@
 @property CGSize screenSize;
 @property Ball* currentBall;
 @property Paddle* paddle;
+
+@property CGFloat accX;
 
 + (id)sharedInstance;
 - (id)init;
@@ -39,5 +42,7 @@
 - (void)touchesBeganPhysics:(CGPoint)touchPoint;
 - (void)touchesMovedPhysics:(CGPoint)touchPoint;
 - (void)looseLife;
+- (void)setUpMotionController;
+- (void)updateAccelerationX:(CGFloat)accelerationX;
 
 @end

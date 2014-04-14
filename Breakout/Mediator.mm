@@ -7,6 +7,9 @@
 //
 
 #import "Mediator.h"
+#import "GameController.h"
+#import "PhysicsController.h"
+#import "MotionController.h"
 
 @implementation Mediator
 
@@ -27,6 +30,9 @@
         //view = viewController;
         game = [[GameController alloc] init];
         physics = [[PhysicsController alloc] init];
+        
+        motion = [[MotionController alloc] init];
+        
     }
     
     return self;
@@ -78,4 +84,13 @@
     [game looseLife];
 }
 
+- (void)setUpMotionController
+{
+    [motion setUpMotionController];
+}
+
+- (void)updateAccelerationX:(CGFloat)accelerationX
+{
+    _accX = accelerationX;
+}
 @end

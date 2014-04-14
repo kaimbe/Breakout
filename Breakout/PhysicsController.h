@@ -9,7 +9,6 @@
 #import <Box2D/Box2D.h>
 #import "ContactListener.h"
 
-@class MotionController;
 @class Mediator;
 
 @interface PhysicsController : NSObject {
@@ -26,7 +25,6 @@
     ContactListener *_contactListener;
 }
 
-@property MotionController *_motion;
 @property Mediator *theMediator;
 @property CGSize screenSize;
 

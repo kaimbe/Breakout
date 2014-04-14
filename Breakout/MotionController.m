@@ -7,6 +7,7 @@
 //
 
 #import "MotionController.h"
+#import "Mediator.h"
 
 @implementation MotionController
 
@@ -19,6 +20,8 @@
                                                  [self updateAcceleration:accelerometerData.acceleration];
                                                  if(error){ NSLog(@"%@", error); }
                                              }];
+    
+    _theMediator = [Mediator sharedInstance];
     NSLog(@"Motion Controller Loaded");
 }
 
@@ -35,7 +38,9 @@
     //NSLog(@"%f", acceleration.x);
     
     // filtered
-    // NSLog(@"%f", accX);
+     //NSLog(@"%f", _accX);
+    
+    [_theMediator updateAccelerationX:_accX];
 }
 
 @end

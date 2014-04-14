@@ -21,10 +21,6 @@
     // timer
     [NSTimer scheduledTimerWithTimeInterval:0.01f target:self selector:@selector(physicsTick:) userInfo:nil repeats:YES];
     
-    // motion controller
-    __motion = [[MotionController alloc] init];
-    [__motion setUpMotionController];
-    
     // Create a world
     b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
     _world = new b2World(gravity);
@@ -205,7 +201,7 @@
     }
     
     const float accMultiplier = 30.0f;
-    b2Vec2 force = b2Vec2(accMultiplier * __motion.accX, 0.0f);
+    b2Vec2 force = b2Vec2(accMultiplier * [_theMediator accX], 0.0f);
     
     for (std::vector<int>::size_type i = 0; i != paddleBodies.size(); i++)
     {
