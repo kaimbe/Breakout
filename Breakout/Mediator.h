@@ -28,8 +28,6 @@
 @property NSMutableArray* blocks;
 
 @property CGSize screenSize;
-//@property Ball* currentBall;
-//@property Paddle* paddle;
 
 @property CGFloat accX;
 
@@ -51,7 +49,6 @@
 - (void)updateScore;
 - (void)updateLives;
 - (void)toggleTimer;
-- (BOOL)getTimerState;
 - (void)resetPhysics;
 
 @end

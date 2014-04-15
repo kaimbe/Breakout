@@ -120,14 +120,8 @@
     [physics toggleTimer];
 }
 
-- (BOOL)getTimerState
-{
-    return [physics timerState];
-}
-
 - (void)resetPhysics
 {
-    //[physics reset];
     physics = [[PhysicsController alloc] init];
 }
 

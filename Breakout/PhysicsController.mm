@@ -26,7 +26,6 @@
     b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
     _world = new b2World(gravity);
     
-    //NSLog(@"%f", _currentBall.position.x);
     // Create edges around the entire screen
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0,0);
@@ -143,7 +142,6 @@
 
 - (void)touchesBeganPhysics:(CGPoint)touchPoint
 {
-    
     if (_mouseJoint != NULL) return;
     
     b2Vec2 locationWorld = b2Vec2(touchPoint.x/PTM_RATIO, touchPoint.y/PTM_RATIO);
@@ -180,22 +178,21 @@
     // destroy joint
     if (_mouseJoint != NULL)
     {
-        NSLog(@"destroy joint");
         _world->DestroyJoint(_mouseJoint);
         _mouseJoint = NULL;
     }
 }
 
-- (void) physicsTick:(NSTimer *)timer {
-    //NSLog(@"physics tick");
+- (void) physicsTick:(NSTimer *)timer
+{
     float32 timeStep = 1.0f / 60.0f;
-    int32 velocityIterations = 2;
-    int32 positionIterations = 1;
+    int32 velocityIterations = 1;
+    int32 positionIterations = 2;
     _world->Step(timeStep, velocityIterations, positionIterations);
     
-    // balls
-    static int maxSpeed = 10;
+    const float maxSpeed = 15.0f;
     
+    // balls
     for (std::vector<int>::size_type i = 0; i != ballBodies.size(); i++)
     {
         b2Body* body = ballBodies.at(i);
@@ -213,9 +210,8 @@
     }
     
     
-    const float accMultiplier = 30.0f;
+    const float accMultiplier = 60.0f;
     b2Vec2 force = b2Vec2(accMultiplier * [_theMediator accX], 0.0f);
-    
     
     for (std::vector<int>::size_type i = 0; i != paddleBodies.size(); i++)
     {
@@ -318,78 +314,5 @@
         NSLog(@"timer off");
     }
 }
-
-/*
-- (void)reset
-{
-    for (int i = 0; i < blockBodies.size(); i++) {
-        b2Body *temp = blockBodies[i];
-        b2JointEdge *jl = temp->GetJointList();
-        
-         while (jl)
-        {
-            // throws error here. something to do with ball hitting blocks
-            NSLog(@"del 2");
-            b2Joint* j = jl->joint;
-            
-            if (j == _mouseJoint)
-            {
-                _world->DestroyJoint(j);
-                _mouseJoint = NULL;
-                break;
-            }
-            
-            jl = jl->next;
-             
-        }
-        _world->DestroyBody(temp);
-        
-    }
-    blockBodies.clear();
-    
-    for(int i = 0; i < ballBodies.size(); i++)
-    {
-        b2Body *temp = ballBodies[i];
-        b2JointEdge* jl = temp->GetJointList();
-        
-        while (jl)
-        {
-            b2Joint* j = jl->joint;
-            
-            if (j == _mouseJoint)
-            {
-                _world->DestroyJoint(j);
-                _mouseJoint = NULL;
-                break;
-            }
-            
-            jl = jl->next;
-        }
-        _world->DestroyBody(temp);
-    }
-    ballBodies.clear();
-    
-    for (int i = 0; i < paddleBodies.size(); i++) {
-        b2Body *temp = paddleBodies[i];
-        b2JointEdge* jl = temp->GetJointList();
-        
-        while (jl)
-        {
-            b2Joint* j = jl->joint;
-            
-            if (j == _mouseJoint)
-            {
-                _world->DestroyJoint(j);
-                _mouseJoint = NULL;
-                break;
-            }
-            
-            jl = jl->next;
-        }
-        _world->DestroyBody(temp);
-    }
-    paddleBodies.clear();
-}
- */
 
 @end

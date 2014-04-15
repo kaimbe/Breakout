@@ -14,14 +14,8 @@
 @interface GameController : NSObject
 
 @property Level* currentLevel;
-//@property Ball *currentBall;
-//@property Paddle *paddle;
 
 @property Mediator *theMediator;
-
-//@property NSMutableArray* balls;
-//@property NSMutableArray* paddles;
-//@property NSMutableArray* blocks;
 
 @property CGSize screen_size;
 

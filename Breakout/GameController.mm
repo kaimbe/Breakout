@@ -12,7 +12,6 @@
 #import "Ball.h"
 #import "Paddle.h"
 #import "GameBlock.h"
-//#import "Level.h"
 #import "Level1.h"
 #import "Level2.h"
 
@@ -38,22 +37,18 @@
     RGBColor *lightGrey = [[RGBColor alloc] initWithRed:220.0f green:220.0f blue:220.0f alpha:255.0f];
     
     Ball *aBall = [[Ball alloc] initWithRadius: 0.2f*PTM_RATIO position:ball_start_point color:blue];
-    //[_theMediator setCurrentBall: aBall];
     [_theMediator.balls addObject: aBall];
-    //[_theMediator setBalls:_balls];
     
     for (int i = 0; i < [_theMediator.balls count]; i++) {
         Ball *temp = [_theMediator.balls objectAtIndex:i];
         [_theMediator createBallAtPosition:[temp position] radius:[temp radius]];
     }
     
-    Paddle *aPaddle = [[Paddle alloc] initWithSize:CGSizeMake(75.0f, 15.0f)];
-    CGFloat paddle_height = 40.0;
-    [aPaddle setPosition:CGPointMake(_screen_size.width/2, paddle_height)];
+    Paddle *aPaddle = [[Paddle alloc] initWithSize:CGSizeMake(_headerHeight + 70.0f, _headerHeight * 0.8f)];
+    float paddlePositionHeight = 50.0f;
+    [aPaddle setPosition:CGPointMake(_screen_size.width/2, paddlePositionHeight)];
     [aPaddle setColor:lightGrey];
-    //[_theMediator setPaddle:_paddle];
     [_theMediator.paddles addObject:aPaddle];
-    //[_theMediator setPaddles:_paddles];
     
     for (int i = 0; i < [_theMediator.paddles count]; i++) {
         Paddle *temp = [_theMediator.paddles objectAtIndex:i];
@@ -63,8 +58,6 @@
     if (_currentLevelNumber == 0) {
         _currentLevelNumber = 1;
     }
-    
-    [_theMediator updateLevel];
     
     switch (_currentLevelNumber) {
         case 0:
@@ -78,8 +71,11 @@
             break;
         default:
             _currentLevel = [[Level1 alloc] init];
+            _currentLevelNumber = 1;
             break;
     }
+    
+    [_theMediator updateLevel];
     
     [_currentLevel setScreenSize:_screen_size];
     [_currentLevel setHeaderHeight:[self headerHeight]];
@@ -104,9 +100,9 @@
     
     for (int i = 0; i < [_theMediator.blocks count]; i++) {
         GameBlock *temp = [_theMediator.blocks objectAtIndex:i];
-        //NSLog(@"%f %f", [temp position].x, [temp position].y);
         float tempXPos = roundf([temp position].x * 10) / 10;
         float tempYPos = roundf([temp position].y * 10) /10;
+        
         if (tempXPos == xPos && tempYPos == yPos) {
             [_theMediator.blocks removeObjectAtIndex:i];
             _currentScore += [temp scoreValue];
@@ -148,7 +144,6 @@
     [_theMediator resetPhysics];
     [_theMediator setUpPhysicsController];
     [self setUpGameController];
-    //[_theMediator toggleTimer];
 }
 
 @end

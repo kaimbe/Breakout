@@ -40,6 +40,5 @@
 - (void)touchesMovedPhysics:(CGPoint) touchPoint;
 - (void)touchesEndedPhysics:(CGPoint)touchPoint;
 - (void)toggleTimer;
-//- (void)reset;
 
 @end
