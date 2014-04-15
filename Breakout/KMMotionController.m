@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "MotionController.h"
-#import "Mediator.h"
+#import "KMMotionController.h"
+#import "KMMediator.h"
 
-@implementation MotionController
+@implementation KMMotionController
 
 -(void)setUpMotionController
 {
@@ -21,7 +21,7 @@
                                                  if(error){ NSLog(@"%@", error); }
                                              }];
     
-    _theMediator = [Mediator sharedInstance];
+    theMediator = [KMMediator sharedInstance];
     NSLog(@"Motion Controller Loaded");
 }
 
@@ -40,7 +40,7 @@
     // filtered
      //NSLog(@"%f", _accX);
     
-    [_theMediator updateAccelerationX:_accX];
+    [theMediator updateAccelerationX:_accX];
 }
 
 @end

@@ -6,19 +6,18 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "PhysicsController.h"
-#import "Mediator.h"
-#import "MotionController.h"
-#import "Ball.h"
-#import "Paddle.h"
+#import "KMPhysicsController.h"
+#import "KMMediator.h"
+#import "KMMotionController.h"
+#import "KMBall.h"
+#import "KMPaddle.h"
+#import "KMConstants.h"
 
-#import "Constants.h"
-
-@implementation PhysicsController
+@implementation KMPhysicsController
 
 - (void)setUpPhysicsController
 {
-    _theMediator = [Mediator sharedInstance];
+    _theMediator = [KMMediator sharedInstance];
     
     [self toggleTimer];
     
@@ -52,7 +51,7 @@
     _groundBody->CreateFixture(&groundBoxDef);
     
     // Create contact listener
-    _contactListener = new ContactListener();
+    _contactListener = new KMContactListener();
     _world->SetContactListener(_contactListener);
     
     NSLog(@"Physics Controller Loaded");
@@ -105,8 +104,7 @@
     paddleShapeDef.friction = 1.0f;
     paddleShapeDef.restitution = 0.1f;
     _paddleBody->CreateFixture(&paddleShapeDef);
-    
-    
+
     // Restrict paddle along the x axis
     b2PrismaticJointDef jointDef;
     b2Vec2 worldAxis(1.0f, 0.0f);
@@ -129,7 +127,6 @@
     // Create block shape
     b2PolygonShape blockShape;
     blockShape.SetAsBox(width/PTM_RATIO/2, height/PTM_RATIO/2);
-    
     
     // Create shape definition and add to body
     b2FixtureDef blockShapeDef;
@@ -162,7 +159,6 @@
             body->SetAwake(true);
         }
     }
-     
 }
 
 - (void)touchesMovedPhysics:(CGPoint)touchPoint
@@ -185,9 +181,9 @@
 
 - (void) physicsTick:(NSTimer *)timer
 {
-    float32 timeStep = 1.0f / 60.0f;
-    int32 velocityIterations = 1;
-    int32 positionIterations = 2;
+    float timeStep = 1.0f / 60.0f;
+    int velocityIterations = 1;
+    int positionIterations = 2;
     _world->Step(timeStep, velocityIterations, positionIterations);
     
     const float maxSpeed = 15.0f;
@@ -205,7 +201,7 @@
             body->SetLinearDamping(0.0);
         }
         b2Vec2 ballPosition = body->GetPosition();
-        Ball *temp = [[_theMediator balls] objectAtIndex:i];
+        KMBall *temp = [[_theMediator balls] objectAtIndex:i];
         [temp setPosition:CGPointMake(ballPosition.x*PTM_RATIO, ballPosition.y*PTM_RATIO)];
     }
     
@@ -214,7 +210,7 @@
         b2Body *body = paddleBodies.at(i);
         b2Vec2 paddlePosition = body->GetPosition();
         body->ApplyForce(b2Vec2(40.0f * [_theMediator accX] * body->GetMass(), 0.0f), paddlePosition, true);
-        Paddle *temp = [[_theMediator paddles] objectAtIndex:i];
+        KMPaddle *temp = [[_theMediator paddles] objectAtIndex:i];
         [temp setPosition:CGPointMake(paddlePosition.x*PTM_RATIO, paddlePosition.y*PTM_RATIO)];
     }
     
@@ -297,15 +293,13 @@
 
 - (void)toggleTimer
 {
-    if (theTimer == nil) {
+    if (_theTimer == nil) {
         float theInterval = 1.0f/60.0f;
-        theTimer = [NSTimer scheduledTimerWithTimeInterval:theInterval target:self selector:@selector(physicsTick:) userInfo:nil repeats:YES];
-        _timerState = YES;
+        _theTimer = [NSTimer scheduledTimerWithTimeInterval:theInterval target:self selector:@selector(physicsTick:) userInfo:nil repeats:YES];
         NSLog(@"timer on");
     }else{
-        [theTimer invalidate];
-        theTimer = nil;
-        _timerState = NO;
+        [_theTimer invalidate];
+        _theTimer = nil;
         NSLog(@"timer off");
     }
 }

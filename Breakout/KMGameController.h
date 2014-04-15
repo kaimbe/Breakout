@@ -6,24 +6,23 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-@class Ball;
-@class Paddle;
-@class Level;
-@class Mediator;
+@class KMBall;
+@class KMPaddle;
+@class KMLevel;
+@class KMMediator;
 
-@interface GameController : NSObject
+@interface KMGameController : NSObject
+{
+    KMLevel* _currentLevel;
+    KMMediator* _theMediator;
+}
 
-@property Level* currentLevel;
-
-@property Mediator *theMediator;
-
-@property CGSize screen_size;
+@property CGSize screenSize;
+@property CGFloat headerHeight;
 
 @property NSInteger currentScore;
 @property NSInteger currentNumberOfLives;
 @property NSInteger currentLevelNumber;
-
-@property CGFloat headerHeight;
 
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;

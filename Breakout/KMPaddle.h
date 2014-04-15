@@ -1,20 +1,18 @@
 //
-//  Paddle.m
+//  Paddle.h
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-01.
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "Paddle.h"
+#import "KMSprite.h"
 
-@implementation Paddle
+@interface KMPaddle : KMSprite
 
-- (id)initWithSize:(CGSize)size
-{
-    [self setSize:size];
-    return self;
-}
+@property CGSize size;
+
+- (id)initWithSize:(CGSize)size;
 
 @end
 

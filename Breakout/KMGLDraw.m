@@ -5,12 +5,12 @@
 //  Created by Matthew Newell on 2014-04-06.
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
-#import "GLDraw.h"
-#import "Constants.h"
+#import "KMGLDraw.h"
+#import "KMConstants.h"
 
-@implementation GLDraw
+@implementation KMGLDraw
 
-+ (void) GLDrawEllipseAtCenter:(CGPoint)center segments:(int)segments width:(CGFloat)width height:(CGFloat)height filled:(BOOL)filled {
++ (void) GLDrawEllipseAtCenter:(CGPoint)center segments:(NSInteger)segments width:(CGFloat)width height:(CGFloat)height filled:(BOOL)filled {
     glPushMatrix();
     glTranslatef(center.x, center.y, 0.0);
     GLfloat vertices[segments*2];
@@ -25,7 +25,7 @@
     glPopMatrix();
 }
 
-+ (void) GLDrawCircleAtCenter:(CGPoint)center segments:(int)segments circleSize:(CGFloat)circleSize filled:(BOOL) filled {
++ (void) GLDrawCircleAtCenter:(CGPoint)center segments:(NSInteger)segments circleSize:(CGFloat)circleSize filled:(BOOL) filled {
     [self GLDrawEllipseAtCenter:center segments:segments width:circleSize height:circleSize filled:filled];
 }
 

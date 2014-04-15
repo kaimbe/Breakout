@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Minglun Gong. All rights reserved.
 //
 
-#import "Ball.h"
+#import "KMBall.h"
 
-@implementation Ball
+@implementation KMBall
 
-- (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(RGBColor*)color {
+- (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(KMRGBColor*)color {
     [self setRadius: radius];
     [self setPosition: position];
     [self setColor: color];

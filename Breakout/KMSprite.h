@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "RGBColor.h"
+#import "KMRGBColor.h"
 
-@interface Sprite : NSObject
+@interface KMSprite : NSObject
 
 @property CGPoint position;
-@property RGBColor* color;
+@property KMRGBColor* color;
 
 @end

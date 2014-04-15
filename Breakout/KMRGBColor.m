@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "RGBColor.h"
-#import "Constants.h"
+#import "KMRGBColor.h"
+#import "KMConstants.h"
 
-@implementation RGBColor
+@implementation KMRGBColor
 
 - (id)initWithRed:(GLfloat)red green:(GLfloat)green blue:(GLfloat)blue alpha:(GLfloat)alpha
 {

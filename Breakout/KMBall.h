@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "Sprite.h"
+#import "KMSprite.h"
 
-@interface Ball : Sprite
+@interface KMBall : KMSprite
 
 @property CGFloat radius;
 
-- (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(RGBColor*)color;
+- (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(KMRGBColor*)color;
 
 @end

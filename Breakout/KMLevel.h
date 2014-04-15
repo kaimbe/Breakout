@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-@interface Level : NSObject
+@interface KMLevel : NSObject
 
 @property NSMutableArray* blocks;
 @property NSArray* rowColors;

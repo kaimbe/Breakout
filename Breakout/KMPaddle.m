@@ -1,14 +1,14 @@
 //
-//  Block.mm
+//  Paddle.m
 //  Breakout
 //
-//  Created by Matthew Newell on 2014-04-13.
+//  Created by Matthew Newell on 2014-04-01.
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "GameBlock.h"
+#import "KMPaddle.h"
 
-@implementation GameBlock
+@implementation KMPaddle
 
 - (id)initWithSize:(CGSize)size
 {
@@ -17,3 +17,4 @@
 }
 
 @end
+

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "Sprite.h"
+#import "KMSprite.h"
 
-@implementation Sprite
+@implementation KMSprite
 
 @end

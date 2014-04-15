@@ -19,13 +19,13 @@ struct Contact {
     }
 };
 
-class ContactListener : public b2ContactListener {
+class KMContactListener : public b2ContactListener {
     
 public:
     std::vector<Contact>_contacts;
     
-    ContactListener();
-    ~ContactListener();
+    KMContactListener();
+    ~KMContactListener();
     
     virtual void BeginContact(b2Contact* contact);
     virtual void EndContact(b2Contact* contact);

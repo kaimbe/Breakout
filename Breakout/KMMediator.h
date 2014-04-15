@@ -6,28 +6,26 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-@class ViewController;
-@class GameController;
-@class PhysicsController;
-@class MotionController;
+@class BreakoutViewController;
+@class KMGameController;
+@class KMPhysicsController;
+@class KMMotionController;
 
-@class Ball;
-@class Paddle;
-
-@interface Mediator : NSObject
+@interface KMMediator : NSObject
 {
-    GameController *game;
-    PhysicsController *physics;
-    MotionController *motion;
+    KMGameController *game;
+    KMPhysicsController *physics;
+    KMMotionController *motion;
 }
 
-@property ViewController *view;
+@property BreakoutViewController *view;
 
 @property NSMutableArray* balls;
 @property NSMutableArray* paddles;
 @property NSMutableArray* blocks;
 
 @property CGSize screenSize;
+@property CGFloat headerHeight;
 
 @property CGFloat accX;
 

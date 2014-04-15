@@ -7,11 +7,11 @@
 //
 
 #import <Box2D/Box2D.h>
-#import "ContactListener.h"
+#import "KMContactListener.h"
 
-@class Mediator;
+@class KMMediator;
 
-@interface PhysicsController : NSObject {
+@interface KMPhysicsController : NSObject {
     b2World *_world;
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
@@ -22,15 +22,15 @@
 
     b2MouseJoint *_mouseJoint;
     
-    ContactListener *_contactListener;
+    KMContactListener *_contactListener;
     
-    NSTimer *theTimer;
+    NSTimer *_theTimer;
+    
+    KMMediator *_theMediator;
 }
 
-@property Mediator *theMediator;
 @property CGSize screenSize;
 @property CGFloat headerHeight;
-@property BOOL timerState;
 
 - (void)setUpPhysicsController;
 - (void)createBallAtPosition:(CGPoint)position radius:(CGFloat)radius;

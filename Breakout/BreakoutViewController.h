@@ -8,27 +8,22 @@
 
 #import <GLKit/GLKit.h>
 
-@class Mediator;
+@class KMMediator;
 
-@interface ViewController : GLKViewController {
-    GLKTextureInfo *textureInfo;
+@interface BreakoutViewController : GLKViewController {
+    GLKTextureInfo *_textureInfo;
     
-    //NSMutableArray *balls;
-    //NSMutableArray *paddles;
-    //NSMutableArray *blocks;
-    
-    CGSize screenSize;
+    KMMediator *_theMediator;
 }
 
-@property Mediator *theMediator;
+@property CGSize screenSize;
+@property CGFloat headerHeight;
 
 @property (strong, nonatomic) EAGLContext *context;
 
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UILabel *lifeLabel;
 @property (strong, nonatomic) UILabel *levelLabel;
-
-@property CGFloat headerHeight;
 
 - (void)setupGL;
 - (void)tearDownGL;

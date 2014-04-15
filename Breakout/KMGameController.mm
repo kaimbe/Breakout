@@ -6,23 +6,23 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "GameController.h"
-#import "Mediator.h"
+#import "KMGameController.h"
+#import "KMMediator.h"
 
-#import "Ball.h"
-#import "Paddle.h"
-#import "GameBlock.h"
-#import "Level1.h"
-#import "Level2.h"
+#import "KMBall.h"
+#import "KMPaddle.h"
+#import "KMBlock.h"
+#import "KMLevel1.h"
+#import "KMLevel2.h"
 
-#import "RGBColor.h"
-#import "Constants.h"
+#import "KMRGBColor.h"
+#import "KMConstants.h"
 
-@implementation GameController
+@implementation KMGameController
 
 - (void)setUpGameController
 {
-    _theMediator = [Mediator sharedInstance];
+    _theMediator = [KMMediator sharedInstance];
     
     _theMediator.balls = [[NSMutableArray alloc] init];
     _theMediator.paddles = [[NSMutableArray alloc] init];
@@ -31,26 +31,26 @@
     _currentScore = 0;
     [_theMediator updateScore];
     
-    CGPoint ball_start_point = CGPointMake(_screen_size.width/2, _screen_size.height/2);
+    CGPoint ball_start_point = CGPointMake(_screenSize.width/2, _screenSize.height/2);
     
-    RGBColor *blue = [[RGBColor alloc] initWithRed:255.0f green:118.0f blue:0.0f alpha:255.0f];
-    RGBColor *lightGrey = [[RGBColor alloc] initWithRed:220.0f green:220.0f blue:220.0f alpha:255.0f];
+    KMRGBColor *blue = [[KMRGBColor alloc] initWithRed:255.0f green:118.0f blue:0.0f alpha:255.0f];
+    KMRGBColor *lightGrey = [[KMRGBColor alloc] initWithRed:220.0f green:220.0f blue:220.0f alpha:255.0f];
     
-    Ball *aBall = [[Ball alloc] initWithRadius: (_headerHeight * 0.5f) position:ball_start_point color:blue];
+    KMBall *aBall = [[KMBall alloc] initWithRadius: (_headerHeight * 0.5f) position:ball_start_point color:blue];
     [_theMediator.balls addObject: aBall];
     
     for (int i = 0; i < [_theMediator.balls count]; i++) {
-        Ball *temp = [_theMediator.balls objectAtIndex:i];
+        KMBall *temp = [_theMediator.balls objectAtIndex:i];
         [_theMediator createBallAtPosition:[temp position] radius:[temp radius]];
     }
     
-    Paddle *aPaddle = [[Paddle alloc] initWithSize:CGSizeMake(_headerHeight * 3, _headerHeight * 0.8f)];
-    [aPaddle setPosition:CGPointMake(_screen_size.width/2, _headerHeight * 1.7)];
+    KMPaddle *aPaddle = [[KMPaddle alloc] initWithSize:CGSizeMake(_headerHeight * 3, _headerHeight * 0.8f)];
+    [aPaddle setPosition:CGPointMake(_screenSize.width/2, _headerHeight * 1.7)];
     [aPaddle setColor:lightGrey];
     [_theMediator.paddles addObject:aPaddle];
     
     for (int i = 0; i < [_theMediator.paddles count]; i++) {
-        Paddle *temp = [_theMediator.paddles objectAtIndex:i];
+        KMPaddle *temp = [_theMediator.paddles objectAtIndex:i];
         [_theMediator createPaddleAtPosition:[temp position] width:[temp size].width height:[temp size].height];
     }
     
@@ -60,23 +60,23 @@
     
     switch (_currentLevelNumber) {
         case 0:
-            _currentLevel = [[Level1 alloc] init];
+            _currentLevel = [[KMLevel1 alloc] init];
             break;
         case 1:
-            _currentLevel = [[Level1 alloc] init];
+            _currentLevel = [[KMLevel1 alloc] init];
             break;
         case 2:
-            _currentLevel = [[Level2 alloc] init];
+            _currentLevel = [[KMLevel2 alloc] init];
             break;
         default:
-            _currentLevel = [[Level1 alloc] init];
+            _currentLevel = [[KMLevel1 alloc] init];
             _currentLevelNumber = 1;
             break;
     }
     
     [_theMediator updateLevel];
     
-    [_currentLevel setScreenSize:_screen_size];
+    [_currentLevel setScreenSize:_screenSize];
     [_currentLevel setHeaderHeight:[self headerHeight]];
     [_currentLevel setBlocks:_theMediator.blocks];
     [_currentLevel setUpLevel];
@@ -85,7 +85,7 @@
     [_theMediator updateLives];
     
     for (int i = 0; i < [_theMediator.blocks count]; i++) {
-        GameBlock *temp = [_theMediator.blocks objectAtIndex:i];
+        KMBlock *temp = [_theMediator.blocks objectAtIndex:i];
         [_theMediator createBlockAtPosition:[temp position] width:[temp size].width height:[temp size].height];
     }
     
@@ -98,7 +98,7 @@
     float yPos = roundf(position.y * 10) / 10;
     
     for (int i = 0; i < [_theMediator.blocks count]; i++) {
-        GameBlock *temp = [_theMediator.blocks objectAtIndex:i];
+        KMBlock *temp = [_theMediator.blocks objectAtIndex:i];
         float tempXPos = roundf([temp position].x * 10) / 10;
         float tempYPos = roundf([temp position].y * 10) /10;
         

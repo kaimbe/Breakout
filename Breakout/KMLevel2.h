@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "Level.h"
+#import "KMLevel.h"
 
-@interface Level2 : Level
+@interface KMLevel2 : KMLevel
 
 @end

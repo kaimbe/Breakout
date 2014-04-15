@@ -7,15 +7,15 @@
 //
 #import <CoreMotion/CoreMotion.h>
 
-@class Mediator;
+@class KMMediator;
 
-@interface MotionController : NSObject {
+@interface KMMotionController : NSObject {
     CGFloat avgX;
+    KMMediator *theMediator;
 }
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property CGFloat accX;
-@property Mediator *theMediator;
 
 -(void)setUpMotionController;
 -(void)updateAcceleration:(CMAcceleration)acceleration;

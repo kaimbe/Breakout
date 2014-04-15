@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "Mediator.h"
-#import "ViewController.h"
-#import "GameController.h"
-#import "PhysicsController.h"
-#import "MotionController.h"
+#import "KMMediator.h"
+#import "BreakoutViewController.h"
+#import "KMGameController.h"
+#import "KMPhysicsController.h"
+#import "KMMotionController.h"
 
-@implementation Mediator
+@implementation KMMediator
 
 + (id)sharedInstance
 {
-    static Mediator *sharedInstance = nil;
+    static KMMediator *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
@@ -28,9 +28,9 @@
 {
     if (self = [super init])
     {
-        game = [[GameController alloc] init];
-        physics = [[PhysicsController alloc] init];
-        motion = [[MotionController alloc] init];
+        game = [[KMGameController alloc] init];
+        physics = [[KMPhysicsController alloc] init];
+        motion = [[KMMotionController alloc] init];
     }
     
     return self;
@@ -38,7 +38,7 @@
 
 - (void)setUpGameController
 {
-    [game setScreen_size:_screenSize];
+    [game setScreenSize:_screenSize];
     [game setHeaderHeight:[_view headerHeight]];
     [game setUpGameController];
 }
@@ -122,7 +122,7 @@
 
 - (void)resetPhysics
 {
-    physics = [[PhysicsController alloc] init];
+    physics = [[KMPhysicsController alloc] init];
 }
 
 @end
