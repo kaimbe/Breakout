@@ -15,7 +15,7 @@
 }
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
-@property CGFloat accX;
+@property (nonatomic) CGFloat accX;
 
 -(void)setUpMotionController;
 -(void)updateAcceleration:(CMAcceleration)acceleration;

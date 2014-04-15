@@ -18,16 +18,16 @@
     KMMotionController *motion;
 }
 
-@property BreakoutViewController *view;
+@property (strong, nonatomic) BreakoutViewController *view;
 
-@property NSMutableArray* balls;
-@property NSMutableArray* paddles;
-@property NSMutableArray* blocks;
+@property (strong, nonatomic) NSMutableArray* balls;
+@property (strong, nonatomic) NSMutableArray* paddles;
+@property (strong, nonatomic) NSMutableArray* blocks;
 
-@property CGSize screenSize;
-@property CGFloat headerHeight;
+@property (nonatomic) CGSize screenSize;
+@property (nonatomic) CGFloat headerHeight;
 
-@property CGFloat accX;
+@property (nonatomic) CGFloat accX;
 
 + (id)sharedInstance;
 - (id)init;

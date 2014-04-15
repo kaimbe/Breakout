@@ -17,12 +17,12 @@
     KMMediator* _theMediator;
 }
 
-@property CGSize screenSize;
-@property CGFloat headerHeight;
+@property (nonatomic) CGSize screenSize;
+@property (nonatomic) CGFloat headerHeight;
 
-@property NSInteger currentScore;
-@property NSInteger currentNumberOfLives;
-@property NSInteger currentLevelNumber;
+@property (nonatomic) NSInteger currentScore;
+@property (nonatomic) NSInteger currentNumberOfLives;
+@property (nonatomic) NSInteger currentLevelNumber;
 
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;

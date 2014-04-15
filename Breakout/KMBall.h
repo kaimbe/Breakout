@@ -10,7 +10,7 @@
 
 @interface KMBall : KMSprite
 
-@property CGFloat radius;
+@property (nonatomic) CGFloat radius;
 
 - (id)initWithRadius:(CGFloat)radius position:(CGPoint)position color:(KMRGBColor*)color;
 

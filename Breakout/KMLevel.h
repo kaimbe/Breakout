@@ -8,11 +8,11 @@
 
 @interface KMLevel : NSObject
 
-@property NSMutableArray* blocks;
-@property NSArray* rowColors;
-@property CGSize screenSize;
-@property NSInteger numberOfLives;
-@property CGFloat headerHeight;
+@property (strong, nonatomic) NSMutableArray* blocks;
+@property (strong, nonatomic) NSArray* rowColors;
+@property (nonatomic) CGSize screenSize;
+@property (nonatomic) NSInteger numberOfLives;
+@property (nonatomic) CGFloat headerHeight;
 
 - (void)setUpLevel;
 

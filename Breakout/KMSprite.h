@@ -10,7 +10,7 @@
 
 @interface KMSprite : NSObject
 
-@property CGPoint position;
-@property KMRGBColor* color;
+@property (nonatomic) CGPoint position;
+@property (strong, nonatomic) KMRGBColor* color;
 
 @end

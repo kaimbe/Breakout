@@ -10,7 +10,7 @@
 
 @interface KMPaddle : KMSprite
 
-@property CGSize size;
+@property (nonatomic) CGSize size;
 
 - (id)initWithSize:(CGSize)size;
 

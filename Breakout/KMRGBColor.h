@@ -8,10 +8,10 @@
 
 @interface KMRGBColor : NSObject
 
-@property GLfloat red;
-@property GLfloat green;
-@property GLfloat blue;
-@property GLfloat alpha;
+@property (nonatomic) GLfloat red;
+@property (nonatomic) GLfloat green;
+@property (nonatomic) GLfloat blue;
+@property (nonatomic) GLfloat alpha;
 
 - (id)initWithRed:(GLfloat)red green:(GLfloat)green blue:(GLfloat)blue alpha:(GLfloat)alpha;
 

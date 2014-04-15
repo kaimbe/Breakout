@@ -16,8 +16,8 @@
     KMMediator *_theMediator;
 }
 
-@property CGSize screenSize;
-@property CGFloat headerHeight;
+@property (nonatomic) CGSize screenSize;
+@property (nonatomic) CGFloat headerHeight;
 
 @property (strong, nonatomic) EAGLContext *context;
 

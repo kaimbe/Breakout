@@ -29,8 +29,8 @@
     KMMediator *_theMediator;
 }
 
-@property CGSize screenSize;
-@property CGFloat headerHeight;
+@property (nonatomic) CGSize screenSize;
+@property (nonatomic) CGFloat headerHeight;
 
 - (void)setUpPhysicsController;
 - (void)createBallAtPosition:(CGPoint)position radius:(CGFloat)radius;

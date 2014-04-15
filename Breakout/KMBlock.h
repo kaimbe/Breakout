@@ -10,8 +10,8 @@
 
 @interface KMBlock : KMSprite
 
-@property CGSize size;
-@property NSInteger scoreValue;
+@property (nonatomic) CGSize size;
+@property (nonatomic) NSInteger scoreValue;
 
 - (id)initWithSize:(CGSize)size;
 
