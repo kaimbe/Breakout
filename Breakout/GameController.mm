@@ -111,9 +111,15 @@
 - (void)gameOver
 {
     [_theMediator toggleTimer];
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:NO];
+}
+
+- (void)timerFireMethod:(NSTimer *)timer
+{
     [_theMediator resetPhysics];
+    [_theMediator setUpPhysicsController];
     [self setUpGameController];
-    [_theMediator toggleTimer];
+    //[_theMediator toggleTimer];
 }
 
 @end

@@ -114,7 +114,7 @@
     jointDef.collideConnected = true;
     jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
     _world->CreateJoint(&jointDef);
-     
+    
 }
 
 - (void)createBlockAtPosition:(CGPoint)position width:(CGFloat)width height:(CGFloat)height
@@ -143,6 +143,7 @@
 
 - (void)touchesBeganPhysics:(CGPoint)touchPoint
 {
+    
     if (_mouseJoint != NULL) return;
     
     b2Vec2 locationWorld = b2Vec2(touchPoint.x/PTM_RATIO, touchPoint.y/PTM_RATIO);
@@ -163,6 +164,7 @@
             body->SetAwake(true);
         }
     }
+     
 }
 
 - (void)touchesMovedPhysics:(CGPoint)touchPoint
@@ -171,6 +173,17 @@
     
     b2Vec2 locationWorld = b2Vec2(touchPoint.x/PTM_RATIO, touchPoint.y/PTM_RATIO);
     _mouseJoint->SetTarget(locationWorld);
+}
+
+- (void)touchesEndedPhysics:(CGPoint)touchPoint
+{
+    // destroy joint
+    if (_mouseJoint != NULL)
+    {
+        NSLog(@"destroy joint");
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
 }
 
 - (void) physicsTick:(NSTimer *)timer {
@@ -199,8 +212,10 @@
         [temp setPosition:CGPointMake(ballPosition.x*PTM_RATIO, ballPosition.y*PTM_RATIO)];
     }
     
+    
     const float accMultiplier = 30.0f;
     b2Vec2 force = b2Vec2(accMultiplier * [_theMediator accX], 0.0f);
+    
     
     for (std::vector<int>::size_type i = 0; i != paddleBodies.size(); i++)
     {
@@ -255,7 +270,6 @@
                         toDestroy.push_back(bodyA);
                     }
                 }
-                
             }
         }
     }
@@ -269,9 +283,25 @@
         
         [_theMediator removeBlockAtPosition:CGPointMake(position.x*PTM_RATIO, position.y*PTM_RATIO)];
         
+        b2JointEdge* jl = body->GetJointList();
+        
+        while (jl)
+        {
+            NSLog(@"del 1");
+            b2Joint* j = jl->joint;
+            
+            if (j == _mouseJoint)
+            {
+                _world->DestroyJoint(j);
+                _mouseJoint = NULL;
+                break;
+            }
+            
+            jl = jl->next;
+        }
+        
         _world->DestroyBody(body);
     }
-    
 }
 
 - (void)toggleTimer
@@ -289,23 +319,76 @@
     }
 }
 
+
 - (void)reset
 {
-    for(std::vector<b2Body*>::iterator i = ballBodies.begin(); i != ballBodies.end(); ++i )
+    for (int i = 0; i < blockBodies.size(); i++) {
+        b2Body *temp = blockBodies[i];
+        b2JointEdge *jl = temp->GetJointList();
+        
+         while (jl)
+        {
+            // throws error here. something to do with ball hitting blocks
+            NSLog(@"del 2");
+            b2Joint* j = jl->joint;
+            
+            if (j == _mouseJoint)
+            {
+                _world->DestroyJoint(j);
+                _mouseJoint = NULL;
+                break;
+            }
+            
+            jl = jl->next;
+             
+        }
+        _world->DestroyBody(temp);
+        
+    }
+    blockBodies.clear();
+    
+    for(int i = 0; i < ballBodies.size(); i++)
     {
-        _world->DestroyBody(*i);
+        b2Body *temp = ballBodies[i];
+        b2JointEdge* jl = temp->GetJointList();
+        
+        while (jl)
+        {
+            b2Joint* j = jl->joint;
+            
+            if (j == _mouseJoint)
+            {
+                _world->DestroyJoint(j);
+                _mouseJoint = NULL;
+                break;
+            }
+            
+            jl = jl->next;
+        }
+        _world->DestroyBody(temp);
     }
     ballBodies.clear();
     
-    for (std::vector<b2Body*>::iterator i = paddleBodies.begin(); i != paddleBodies.end(); ++i ) {
-        _world->DestroyBody(*i);
+    for (int i = 0; i < paddleBodies.size(); i++) {
+        b2Body *temp = paddleBodies[i];
+        b2JointEdge* jl = temp->GetJointList();
+        
+        while (jl)
+        {
+            b2Joint* j = jl->joint;
+            
+            if (j == _mouseJoint)
+            {
+                _world->DestroyJoint(j);
+                _mouseJoint = NULL;
+                break;
+            }
+            
+            jl = jl->next;
+        }
+        _world->DestroyBody(temp);
     }
     paddleBodies.clear();
-    
-    for (std::vector<b2Body*>::iterator i = blockBodies.begin(); i != blockBodies.end(); ++i) {
-        _world->DestroyBody(*i);
-    }
-    blockBodies.clear();
 }
 
 @end

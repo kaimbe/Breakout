@@ -80,6 +80,11 @@
     [physics touchesMovedPhysics:touchPoint];
 }
 
+- (void)touchesEndedPhysics:(CGPoint)touchPoint
+{
+    [physics touchesEndedPhysics:touchPoint];
+}
+
 - (void)looseLife
 {
     [game looseLife];
@@ -117,7 +122,8 @@
 
 - (void)resetPhysics
 {
-    [physics reset];
+    //[physics reset];
+    physics = [[PhysicsController alloc] init];
 }
 
 @end

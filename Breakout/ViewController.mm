@@ -119,7 +119,7 @@
     glOrthof(0, screenSize.width, 0, screenSize.height, -1.0f, 1.0f);
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // get the touch point and fix coordinates
     CGPoint touch_point = [[touches anyObject] locationInView:self.view];
@@ -129,7 +129,7 @@
     [_theMediator touchesBeganPhysics:touch_point];
 }
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // get the touch point and fix coordinates
     CGPoint touch_point = [[touches anyObject] locationInView:self.view];
@@ -137,6 +137,26 @@
     touch_point = CGPointMake(touch_point.x, touch_point.y);
     
     [_theMediator touchesMovedPhysics:touch_point];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // get the touch point and fix coordinates
+    CGPoint touch_point = [[touches anyObject] locationInView:self.view];
+    touch_point.y = screenSize.height - touch_point.y;
+    touch_point = CGPointMake(touch_point.x, touch_point.y);
+    
+    [_theMediator touchesEndedPhysics:touch_point];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // get the touch point and fix coordinates
+    CGPoint touch_point = [[touches anyObject] locationInView:self.view];
+    touch_point.y = screenSize.height - touch_point.y;
+    touch_point = CGPointMake(touch_point.x, touch_point.y);
+    
+    //[_theMediator touchesEndedPhysics:touch_point];
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -147,10 +167,8 @@
 	glClear(GL_COLOR_BUFFER_BIT);
 	// enable the vertex array rendering
 	glEnableClientState(GL_VERTEX_ARRAY);
-   // NSLog(@"%hhd", [_theMediator getTimerState]);
-    //if ([_theMediator getTimerState]) {
+  
         // draw and dispaly the balls
-    
         for(int i = 0; i < [_theMediator.balls count]; i++) {
             //NSLog(@"%lu", (unsigned long)[balls count]);
             Ball *currentBall = (Ball *) [_theMediator.balls objectAtIndex: i];
@@ -171,8 +189,6 @@
             glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);
             [GLDraw GLDrawRectangleAtCenter:[currentPaddle position] width:[currentPaddle size].width height:[currentPaddle size].height filled:YES];
         }
-    //}
-    
 }
 
 @end

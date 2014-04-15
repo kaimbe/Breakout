@@ -43,6 +43,7 @@
 - (void)createBlockAtPosition:(CGPoint)position width:(CGFloat)width height:(CGFloat)height;
 - (void)touchesBeganPhysics:(CGPoint)touchPoint;
 - (void)touchesMovedPhysics:(CGPoint)touchPoint;
+- (void)touchesEndedPhysics:(CGPoint)touchPoint;
 - (void)looseLife;
 - (void)setUpMotionController;
 - (void)updateAccelerationX:(CGFloat)accelerationX;
