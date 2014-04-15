@@ -18,6 +18,8 @@
 #import "KMRGBColor.h"
 #import "KMConstants.h"
 
+#import "ImageTextures.h"
+
 @implementation BreakoutViewController
 
 - (void)viewDidLoad
@@ -111,6 +113,10 @@
 - (void)setupGL
 {
 	[EAGLContext setCurrentContext:self.context];
+    
+    _textures = [[ImageTextures alloc] initNumTexture:2];
+    [_textures loadTextureAt:1 from:@"brick.png"];
+	[_textures loadTextureAt:0 from:@"glossyBall.png"];
 }
 
 - (void)tearDownGL
@@ -165,8 +171,6 @@
     CGPoint touch_point = [[touches anyObject] locationInView:self.view];
     touch_point.y = _screenSize.height - touch_point.y;
     touch_point = CGPointMake(touch_point.x, touch_point.y);
-    
-    //[_theMediator touchesEndedPhysics:touch_point];
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -177,8 +181,14 @@
 	glClear(GL_COLOR_BUFFER_BIT);
 	// enable the vertex array rendering
 	glEnableClientState(GL_VERTEX_ARRAY);
-  
-        // draw and dispaly the balls
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    
+    // set up the transformation for models
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+    
+    [_textures bindTextureAt: 0];
+    // draw and dispaly the balls
         for(int i = 0; i < [_theMediator.balls count]; i++) {
             //NSLog(@"%lu", (unsigned long)[balls count]);
             KMBall *currentBall = (KMBall *) [_theMediator.balls objectAtIndex: i];
@@ -186,7 +196,8 @@
             [KMGLDraw GLDrawCircleAtCenter:[currentBall position] segments:16.0f circleSize:[currentBall radius] filled:YES];
         }
     
-        // bricks
+    [_textures bindTextureAt: 1];
+    // bricks
         for(int i = 0; i < [_theMediator.blocks count]; i++) {
             KMBlock *currentBlock = (KMBlock *) [_theMediator.blocks objectAtIndex: i];
             glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
@@ -199,6 +210,12 @@
             glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);
             [KMGLDraw GLDrawRectangleAtCenter:[currentPaddle position] width:[currentPaddle size].width height:[currentPaddle size].height filled:YES];
         }
+    
+    
+    glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisable(GL_TEXTURE_2D);
+     
 }
 
 @end

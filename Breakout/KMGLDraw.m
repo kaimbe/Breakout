@@ -20,7 +20,9 @@
         vertices[count++] = (cos(DEGREES_TO_RADIANS(i))*width);
         vertices[count++] = (sin(DEGREES_TO_RADIANS(i))*height);
     }
+    
     glVertexPointer (2, GL_FLOAT , 0, vertices);
+    glTexCoordPointer(2, GL_FLOAT, 0, vertices);
     glDrawArrays ((filled) ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0, segments);
     glPopMatrix();
 }
@@ -38,24 +40,7 @@
     GLfloat center_x = center.x;
     GLfloat center_y = center.y;
     
-    /*
-    GLfloat vertices[] = {
-        neg_x, neg_y,
-        neg_x, pos_y,
-        center_x,center_y,
-        neg_x, pos_y,
-        pos_x, pos_y,
-        center_x, center_y,
-        pos_x,pos_y,
-        pos_x,neg_y,
-        center_x, center_y,
-        pos_x, neg_y,
-        neg_x, neg_y,
-        center_x, center_y
-    };
-    */
-    
-    GLfloat vertices[] = {
+    const GLfloat vertices[] = {
         center_x, center_y,
         neg_x, neg_y,
         neg_x, pos_y,
@@ -64,10 +49,20 @@
         neg_x, neg_y
     };
     
+    const GLfloat single_map[] = {
+        0.5, 0.5,
+        0.0, 0.0,
+        0.0, 1.0,
+        1.0, 1.0,
+        1.0, 0.0,
+        0.0, 0.0
+    };
+    
     glPushMatrix();
     //glTranslatef(center.x, center.y, 0.0);
     glVertexPointer (2, GL_FLOAT , 0, vertices);
-    //glDrawArrays ((filled) ? GL_TRIANGLE_STRIP: GL_LINE_LOOP, 0, 12);
+    glTexCoordPointer(2, GL_FLOAT, 0, single_map);
+    
     glDrawArrays((filled) ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0, 6);
     glPopMatrix();
 }

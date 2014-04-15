@@ -9,11 +9,14 @@
 #import <GLKit/GLKit.h>
 
 @class KMMediator;
+@class ImageTextures;
 
 @interface BreakoutViewController : GLKViewController {
     GLKTextureInfo *_textureInfo;
     
     KMMediator *_theMediator;
+    
+    ImageTextures *_textures;
 }
 
 @property (nonatomic) CGSize screenSize;

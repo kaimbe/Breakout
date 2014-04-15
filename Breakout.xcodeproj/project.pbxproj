@@ -58,6 +58,9 @@
 		BF35E1FE18FB12ED00E698AA /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF35E1CA18FB12ED00E698AA /* b2WeldJoint.cpp */; };
 		BF35E1FF18FB12ED00E698AA /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF35E1CC18FB12ED00E698AA /* b2WheelJoint.cpp */; };
 		BF35E20018FB12ED00E698AA /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF35E1CF18FB12ED00E698AA /* b2Rope.cpp */; };
+		BF5970AC18FDD75A0087D7B5 /* glossyBall.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5970AB18FDD75A0087D7B5 /* glossyBall.png */; };
+		BF5970B018FDD7C40087D7B5 /* ImageTextures.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5970AF18FDD7C40087D7B5 /* ImageTextures.m */; };
+		BF5970B318FDE6EE0087D7B5 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5970B218FDE6EE0087D7B5 /* brick.png */; };
 		BF6E08FB18FAEF6200F78067 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E08FA18FAEF6200F78067 /* CoreGraphics.framework */; };
 		BF6E090318FAEF6200F78067 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF6E090118FAEF6200F78067 /* InfoPlist.strings */; };
 		BF6E090518FAEF6200F78067 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E090418FAEF6200F78067 /* main.m */; };
@@ -198,6 +201,10 @@
 		BF35E1CD18FB12ED00E698AA /* b2WheelJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2WheelJoint.h; sourceTree = "<group>"; };
 		BF35E1CF18FB12ED00E698AA /* b2Rope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Rope.cpp; sourceTree = "<group>"; };
 		BF35E1D018FB12ED00E698AA /* b2Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2Rope.h; sourceTree = "<group>"; };
+		BF5970AB18FDD75A0087D7B5 /* glossyBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glossyBall.png; sourceTree = "<group>"; };
+		BF5970AF18FDD7C40087D7B5 /* ImageTextures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTextures.m; sourceTree = "<group>"; };
+		BF5970B118FDD7D20087D7B5 /* ImageTextures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTextures.h; sourceTree = "<group>"; };
+		BF5970B218FDE6EE0087D7B5 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
 		BF6E08F518FAEF6200F78067 /* Breakout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breakout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6E08F818FAEF6200F78067 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BF6E08FA18FAEF6200F78067 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -482,6 +489,8 @@
 				BF6E09EA18FAF21700F78067 /* BreakoutAppDelegate.m */,
 				BF6E094218FAF1A700F78067 /* BreakoutViewController.h */,
 				BF6E094318FAF1A700F78067 /* BreakoutViewController.mm */,
+				BF5970B118FDD7D20087D7B5 /* ImageTextures.h */,
+				BF5970AF18FDD7C40087D7B5 /* ImageTextures.m */,
 				BF6E092B18FAF1A700F78067 /* KMConstants.h */,
 				BF6E092C18FAF1A700F78067 /* KMContactListener.h */,
 				BF6E092D18FAF1A700F78067 /* KMContactListener.mm */,
@@ -500,6 +509,8 @@
 		BF6E08FF18FAEF6200F78067 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF5970B218FDE6EE0087D7B5 /* brick.png */,
+				BF5970AB18FDD75A0087D7B5 /* glossyBall.png */,
 				BF95186A18FB23B300C719B5 /* MainStoryboard_iPad.storyboard */,
 				BF95186C18FB23B300C719B5 /* MainStoryboard_iPhone.storyboard */,
 				BF6E090018FAEF6200F78067 /* Breakout-Info.plist */,
@@ -648,9 +659,11 @@
 				BF95186F18FB23B300C719B5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BF35E1D218FB12ED00E698AA /* CMakeLists.txt in Resources */,
 				BF6E090318FAEF6200F78067 /* InfoPlist.strings in Resources */,
+				BF5970AC18FDD75A0087D7B5 /* glossyBall.png in Resources */,
 				BF6E090B18FAEF6200F78067 /* Images.xcassets in Resources */,
 				BF35E1D118FB12ED00E698AA /* Box2DConfig.cmake in Resources */,
 				BF95186E18FB23B300C719B5 /* MainStoryboard_iPad.storyboard in Resources */,
+				BF5970B318FDE6EE0087D7B5 /* brick.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +731,7 @@
 				BF35E1FE18FB12ED00E698AA /* b2WeldJoint.cpp in Sources */,
 				BF35E1D918FB12ED00E698AA /* b2DynamicTree.cpp in Sources */,
 				BF35E1EE18FB12ED00E698AA /* b2Contact.cpp in Sources */,
+				BF5970B018FDD7C40087D7B5 /* ImageTextures.m in Sources */,
 				BF35E1E918FB12ED00E698AA /* b2World.cpp in Sources */,
 				BF6E094718FAF1A700F78067 /* KMGameController.mm in Sources */,
 				BF35E1E018FB12ED00E698AA /* b2Draw.cpp in Sources */,
