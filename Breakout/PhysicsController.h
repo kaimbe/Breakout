@@ -16,25 +16,29 @@
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
     
-    std::vector<b2Body *> ballBodies;
-    std::vector<b2Body *> paddleBodies;
-    std::vector<b2Body *> blockBodies;
-    
+    std::vector<b2Body*> ballBodies;
+    std::vector<b2Body*> paddleBodies;
+    std::vector<b2Body*> blockBodies;
+
     b2MouseJoint *_mouseJoint;
     
     ContactListener *_contactListener;
+    
+    NSTimer *theTimer;
 }
 
 @property Mediator *theMediator;
 @property CGSize screenSize;
 @property CGFloat headerHeight;
+@property BOOL timerState;
 
-- (id)init;
 - (void)setUpPhysicsController;
 - (void)createBallAtPosition:(CGPoint)position radius:(CGFloat)radius;
 - (void)createPaddleAtPosition:(CGPoint)position width:(CGFloat)width height:(CGFloat)height;
 - (void)createBlockAtPosition:(CGPoint)position width:(CGFloat)width height:(CGFloat)height;
 - (void)touchesBeganPhysics:(CGPoint) touchPoint;
 - (void)touchesMovedPhysics:(CGPoint) touchPoint;
+- (void)toggleTimer;
+- (void)reset;
 
 @end

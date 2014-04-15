@@ -16,6 +16,7 @@
 #import "GameBlock.h"
 #import "GLDraw.h"
 #import "RGBColor.h"
+#import "Constants.h"
 
 @implementation ViewController
 
@@ -41,7 +42,7 @@
     
     // life label
     _lifeLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0f, 0.0f, screenSize.width/2, _headerHeight)];
-    _lifeLabel.textAlignment =  UITextAlignmentCenter;
+    _lifeLabel.textAlignment = ALIGN_CENTER;
     _lifeLabel.textColor = [UIColor whiteColor];
     _lifeLabel.backgroundColor = [UIColor grayColor];
     _lifeLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
@@ -49,7 +50,7 @@
     
     // score label
     _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(screenSize.width/2, 0.0f, screenSize.width/2, _headerHeight)];
-    _scoreLabel.textAlignment =  UITextAlignmentCenter;
+    _scoreLabel.textAlignment = ALIGN_CENTER;
     _scoreLabel.textColor = [UIColor whiteColor];
     _scoreLabel.backgroundColor = [UIColor grayColor];
     _scoreLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
@@ -61,10 +62,6 @@
     [_theMediator setUpPhysicsController];
     [_theMediator setUpGameController];
     [_theMediator setUpMotionController];
-    
-    balls = [_theMediator balls];
-    paddles = [_theMediator paddles];
-    blocks = [_theMediator blocks];
     
     NSLog(@"View Controller Loaded");
 }
@@ -150,27 +147,32 @@
 	glClear(GL_COLOR_BUFFER_BIT);
 	// enable the vertex array rendering
 	glEnableClientState(GL_VERTEX_ARRAY);
+   // NSLog(@"%hhd", [_theMediator getTimerState]);
+    //if ([_theMediator getTimerState]) {
+        // draw and dispaly the balls
     
-    // draw and dispaly the balls
-    for(int i = 0; i < [balls count]; i++) {
-        Ball *currentBall = (Ball *) [balls objectAtIndex: i];
-        glColor4f([currentBall color].red, [currentBall color].green, [currentBall color].blue, [currentBall color].alpha);
-        [GLDraw GLDrawCircleAtCenter:[currentBall position] segments:30 circleSize:[currentBall radius] filled:YES];
-    }
+        for(int i = 0; i < [_theMediator.balls count]; i++) {
+            //NSLog(@"%lu", (unsigned long)[balls count]);
+            Ball *currentBall = (Ball *) [_theMediator.balls objectAtIndex: i];
+            glColor4f([currentBall color].red, [currentBall color].green, [currentBall color].blue, [currentBall color].alpha);
+            [GLDraw GLDrawCircleAtCenter:[currentBall position] segments:30 circleSize:[currentBall radius] filled:YES];
+        }
     
-    // bricks
-    for(int i = 0; i < [blocks count]; i++) {
-        GameBlock *currentBlock = (GameBlock *) [blocks objectAtIndex: i];
-        glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
-        [GLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
-    }
+        // bricks
+        for(int i = 0; i < [_theMediator.blocks count]; i++) {
+            GameBlock *currentBlock = (GameBlock *) [_theMediator.blocks objectAtIndex: i];
+            glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
+            [GLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
+        }
     
-    // paddles
-    for(int i = 0; i < [paddles count]; i++) {
-        Paddle *currentPaddle = (Paddle *) [paddles objectAtIndex: i];
-        glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);
-        [GLDraw GLDrawRectangleAtCenter:[currentPaddle position] width:[currentPaddle size].width height:[currentPaddle size].height filled:YES];
-    }
+        // paddles
+        for(int i = 0; i < [_theMediator.paddles count]; i++) {
+            Paddle *currentPaddle = (Paddle *) [_theMediator.paddles objectAtIndex: i];
+            glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);
+            [GLDraw GLDrawRectangleAtCenter:[currentPaddle position] width:[currentPaddle size].width height:[currentPaddle size].height filled:YES];
+        }
+    //}
+    
 }
 
 @end

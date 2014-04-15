@@ -14,14 +14,14 @@
 @interface GameController : NSObject
 
 @property Level* currentLevel;
-@property Ball *currentBall;
-@property Paddle *paddle;
+//@property Ball *currentBall;
+//@property Paddle *paddle;
 
 @property Mediator *theMediator;
 
-@property NSMutableArray* balls;
-@property NSMutableArray* paddles;
-@property NSMutableArray* blocks;
+//@property NSMutableArray* balls;
+//@property NSMutableArray* paddles;
+//@property NSMutableArray* blocks;
 
 @property CGSize screen_size;
 
@@ -30,10 +30,9 @@
 
 @property CGFloat headerHeight;
 
-- (id)init;
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;
 - (void)looseLife;
-//- (void)gameOver;
+- (void)gameOver;
 
 @end

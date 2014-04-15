@@ -16,21 +16,15 @@
 
 @implementation PhysicsController
 
-- (id)init
+- (void)setUpPhysicsController
 {
-    // timer
-    [NSTimer scheduledTimerWithTimeInterval:0.01f target:self selector:@selector(physicsTick:) userInfo:nil repeats:YES];
+    _theMediator = [Mediator sharedInstance];
+    
+    [self toggleTimer];
     
     // Create a world
     b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
     _world = new b2World(gravity);
-    
-    return self;
-}
-
-- (void)setUpPhysicsController
-{
-    _theMediator = [Mediator sharedInstance];
     
     //NSLog(@"%f", _currentBall.position.x);
     // Create edges around the entire screen
@@ -180,6 +174,7 @@
 }
 
 - (void) physicsTick:(NSTimer *)timer {
+    //NSLog(@"physics tick");
     float32 timeStep = 1.0f / 60.0f;
     int32 velocityIterations = 1;
     int32 positionIterations = 1;
@@ -277,6 +272,40 @@
         _world->DestroyBody(body);
     }
     
+}
+
+- (void)toggleTimer
+{
+    if (theTimer == nil) {
+        float theInterval = 1.0f/60.0f;
+        theTimer = [NSTimer scheduledTimerWithTimeInterval:theInterval target:self selector:@selector(physicsTick:) userInfo:nil repeats:YES];
+        _timerState = YES;
+        NSLog(@"timer on");
+    }else{
+        [theTimer invalidate];
+        theTimer = nil;
+        _timerState = NO;
+        NSLog(@"timer off");
+    }
+}
+
+- (void)reset
+{
+    for(std::vector<b2Body*>::iterator i = ballBodies.begin(); i != ballBodies.end(); ++i )
+    {
+        _world->DestroyBody(*i);
+    }
+    ballBodies.clear();
+    
+    for (std::vector<b2Body*>::iterator i = paddleBodies.begin(); i != paddleBodies.end(); ++i ) {
+        _world->DestroyBody(*i);
+    }
+    paddleBodies.clear();
+    
+    for (std::vector<b2Body*>::iterator i = blockBodies.begin(); i != blockBodies.end(); ++i) {
+        _world->DestroyBody(*i);
+    }
+    blockBodies.clear();
 }
 
 @end

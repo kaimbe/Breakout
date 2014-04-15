@@ -105,4 +105,19 @@
     [[_view lifeLabel] setText:[NSString stringWithFormat: @"Lives: %d", [game currentNumberOfLives]]];
 }
 
+- (void)toggleTimer
+{
+    [physics toggleTimer];
+}
+
+- (BOOL)getTimerState
+{
+    return [physics timerState];
+}
+
+- (void)resetPhysics
+{
+    [physics reset];
+}
+
 @end

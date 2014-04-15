@@ -30,7 +30,7 @@
 
     self.rowColors = @[red, lightGreen, yellow, blue, purple, orange, green, teal];
     
-    self.numberOfLives = 3;
+    self.numberOfLives = 0;
     
     for (int yPos = 0; yPos < numberOfRows; yPos++) {
         CGFloat yOffset = (self.screenSize.height - self.headerHeight) - (brickHeight/2 + yPos*brickHeight);

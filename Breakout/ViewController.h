@@ -13,9 +13,9 @@
 @interface ViewController : GLKViewController {
     GLKTextureInfo *textureInfo;
     
-    NSMutableArray *balls;
-    NSMutableArray *paddles;
-    NSMutableArray *blocks;
+    //NSMutableArray *balls;
+    //NSMutableArray *paddles;
+    //NSMutableArray *blocks;
     
     CGSize screenSize;
 }
