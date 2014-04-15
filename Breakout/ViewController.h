@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UILabel *lifeLabel;
+@property (strong, nonatomic) UILabel *levelLabel;
 
 @property CGFloat headerHeight;
 

@@ -81,7 +81,7 @@
     ballShapeDef.restitution = 1.0f;
     _ballBody->CreateFixture(&ballShapeDef);
     
-    b2Vec2 force = b2Vec2(0.0, -15);
+    b2Vec2 force = b2Vec2(0.0, -25.0);
     _ballBody->ApplyForce(force, ballBodyDef.position, true);
 }
 
@@ -189,7 +189,7 @@
 - (void) physicsTick:(NSTimer *)timer {
     //NSLog(@"physics tick");
     float32 timeStep = 1.0f / 60.0f;
-    int32 velocityIterations = 1;
+    int32 velocityIterations = 2;
     int32 positionIterations = 1;
     _world->Step(timeStep, velocityIterations, positionIterations);
     
@@ -319,7 +319,7 @@
     }
 }
 
-
+/*
 - (void)reset
 {
     for (int i = 0; i < blockBodies.size(); i++) {
@@ -390,5 +390,6 @@
     }
     paddleBodies.clear();
 }
+ */
 
 @end

@@ -1,17 +1,17 @@
 //
-//  Level0.m
+//  Level1.m
 //  Breakout
 //
-//  Created by Matthew Newell on 2014-04-12.
+//  Created by Matthew Newell on 2014-04-15.
 //  Copyright (c) 2014 mjn874@mun.ca. All rights reserved.
 //
 
-#import "Level0.h"
+#import "Level2.h"
 
 #import "RGBColor.h"
 #import "GameBlock.h"
 
-@implementation Level0
+@implementation Level2
 
 - (void)setUpLevel
 {
@@ -27,10 +27,10 @@
     RGBColor *teal = [[RGBColor alloc] initWithRed:0.0f green:255.0f blue:255.0f alpha:255.0f];
     RGBColor *blue = [[RGBColor alloc] initWithRed:0.0f green:0.0f blue:255.0f alpha:255.0f];
     RGBColor *purple = [[RGBColor alloc] initWithRed:255.0f green:0.0f blue:255.0f alpha:255.0f];
-
+    
     self.rowColors = @[red, lightGreen, yellow, blue, purple, orange, green, teal];
     
-    self.numberOfLives = 0;
+    self.numberOfLives = 3;
     
     for (int yPos = 0; yPos < numberOfRows; yPos++) {
         CGFloat yOffset = (self.screenSize.height - self.headerHeight) - (brickHeight/2 + yPos*brickHeight);

@@ -8,6 +8,6 @@
 
 #import "Level.h"
 
-@interface Level0 : Level
+@interface Level1 : Level
 
 @end

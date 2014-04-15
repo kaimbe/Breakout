@@ -100,6 +100,11 @@
     _accX = accelerationX;
 }
 
+- (void)updateLevel
+{
+    [[_view levelLabel] setText:[NSString stringWithFormat: @"Level: %d", [game currentLevelNumber]]];
+}
+
 - (void)updateScore
 {
     [[_view scoreLabel] setText:[NSString stringWithFormat: @"Score: %d", [game currentScore]]];

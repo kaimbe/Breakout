@@ -47,6 +47,7 @@
 - (void)looseLife;
 - (void)setUpMotionController;
 - (void)updateAccelerationX:(CGFloat)accelerationX;
+- (void)updateLevel;
 - (void)updateScore;
 - (void)updateLives;
 - (void)toggleTimer;

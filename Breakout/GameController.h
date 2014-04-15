@@ -27,12 +27,13 @@
 
 @property NSInteger currentScore;
 @property NSInteger currentNumberOfLives;
+@property NSInteger currentLevelNumber;
 
 @property CGFloat headerHeight;
 
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;
 - (void)looseLife;
-- (void)gameOver;
+- (void)reset;
 
 @end

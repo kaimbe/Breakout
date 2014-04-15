@@ -12,8 +12,9 @@
 #import "Ball.h"
 #import "Paddle.h"
 #import "GameBlock.h"
-#import "Level.h"
-#import "Level0.h"
+//#import "Level.h"
+#import "Level1.h"
+#import "Level2.h"
 
 #import "RGBColor.h"
 #import "Constants.h"
@@ -59,13 +60,31 @@
         [_theMediator createPaddleAtPosition:[temp position] width:[temp size].width height:[temp size].height];
     }
     
-    // test with level 0 for now
-    _currentLevel = [[Level0 alloc] init];
+    if (_currentLevelNumber == 0) {
+        _currentLevelNumber = 1;
+    }
+    
+    [_theMediator updateLevel];
+    
+    switch (_currentLevelNumber) {
+        case 0:
+            _currentLevel = [[Level1 alloc] init];
+            break;
+        case 1:
+            _currentLevel = [[Level1 alloc] init];
+            break;
+        case 2:
+            _currentLevel = [[Level2 alloc] init];
+            break;
+        default:
+            _currentLevel = [[Level1 alloc] init];
+            break;
+    }
+    
     [_currentLevel setScreenSize:_screen_size];
     [_currentLevel setHeaderHeight:[self headerHeight]];
     [_currentLevel setBlocks:_theMediator.blocks];
     [_currentLevel setUpLevel];
-    //[_theMediator setBlocks:[_currentLevel blocks]];
     
     _currentNumberOfLives = [_currentLevel numberOfLives];
     [_theMediator updateLives];
@@ -85,30 +104,40 @@
     
     for (int i = 0; i < [_theMediator.blocks count]; i++) {
         GameBlock *temp = [_theMediator.blocks objectAtIndex:i];
-        if ([temp position].x == xPos && [temp position].y == yPos) {
+        //NSLog(@"%f %f", [temp position].x, [temp position].y);
+        float tempXPos = roundf([temp position].x * 10) / 10;
+        float tempYPos = roundf([temp position].y * 10) /10;
+        if (tempXPos == xPos && tempYPos == yPos) {
             [_theMediator.blocks removeObjectAtIndex:i];
             _currentScore += [temp scoreValue];
             [_theMediator updateScore];
             NSLog(@"Score: %d", _currentScore);
         }
     }
+    
+    // complete a level
+    if ([_theMediator.blocks count] == 0) {
+        _currentLevelNumber++;
+        [self reset];
+    }
 }
 
 - (void)looseLife
 {
-    if (_currentNumberOfLives != 0)
+    if (_currentNumberOfLives <= 1)
+    {
+        [self setCurrentLevelNumber:1];
+        [self reset];
+    }
+    else if (_currentNumberOfLives > 1)
     {
         _currentNumberOfLives--;
         [_theMediator updateLives];
         NSLog(@"Number of Lives Remaining: %d", _currentNumberOfLives);
     }
-    else if (_currentNumberOfLives <= 0)
-    {
-        [self gameOver];
-    }
 }
 
-- (void)gameOver
+- (void)reset
 {
     [_theMediator toggleTimer];
     [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:NO];

@@ -40,20 +40,30 @@
     
     _headerHeight = screenSize.height*0.05f;
     
+    float textPercent = 0.7;
+    
+    // level label
+    _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenSize.width/3, _headerHeight)];
+    _levelLabel.textAlignment = ALIGN_CENTER;
+    _levelLabel.textColor = [UIColor whiteColor];
+    _levelLabel.backgroundColor = [UIColor grayColor];
+    _levelLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight*textPercent)];
+    [self.view addSubview:_levelLabel];
+    
     // life label
-    _lifeLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0f, 0.0f, screenSize.width/2, _headerHeight)];
+    _lifeLabel = [ [UILabel alloc ] initWithFrame:CGRectMake((screenSize.width/3)-1, 0.0f, screenSize.width/3, _headerHeight)];
     _lifeLabel.textAlignment = ALIGN_CENTER;
     _lifeLabel.textColor = [UIColor whiteColor];
     _lifeLabel.backgroundColor = [UIColor grayColor];
-    _lifeLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
+    _lifeLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight*textPercent)];
     [self.view addSubview:_lifeLabel];
     
     // score label
-    _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake(screenSize.width/2, 0.0f, screenSize.width/2, _headerHeight)];
+    _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake((2*(screenSize.width/3))-1, 0.0f, (screenSize.width/3)+2, _headerHeight)];
     _scoreLabel.textAlignment = ALIGN_CENTER;
     _scoreLabel.textColor = [UIColor whiteColor];
     _scoreLabel.backgroundColor = [UIColor grayColor];
-    _scoreLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight)];
+    _scoreLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight*textPercent)];
     [self.view addSubview:_scoreLabel];
     
     _theMediator = [Mediator sharedInstance];
