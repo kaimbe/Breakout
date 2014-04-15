@@ -38,6 +38,7 @@
     GLfloat center_x = center.x;
     GLfloat center_y = center.y;
     
+    /*
     GLfloat vertices[] = {
         neg_x, neg_y,
         neg_x, pos_y,
@@ -52,11 +53,22 @@
         neg_x, neg_y,
         center_x, center_y
     };
+    */
+    
+    GLfloat vertices[] = {
+        center_x, center_y,
+        neg_x, neg_y,
+        neg_x, pos_y,
+        pos_x, pos_y,
+        pos_x, neg_y,
+        neg_x, neg_y
+    };
     
     glPushMatrix();
     //glTranslatef(center.x, center.y, 0.0);
     glVertexPointer (2, GL_FLOAT , 0, vertices);
-    glDrawArrays ((filled) ? GL_TRIANGLE_STRIP: GL_LINE_LOOP, 0, 12);
+    //glDrawArrays ((filled) ? GL_TRIANGLE_STRIP: GL_LINE_LOOP, 0, 12);
+    glDrawArrays((filled) ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0, 6);
     glPopMatrix();
 }
 

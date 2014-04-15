@@ -43,7 +43,7 @@
     float textPercent = 0.7;
     
     // level label
-    _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenSize.width/3, _headerHeight)];
+    _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, (screenSize.width/3)+2, _headerHeight)];
     _levelLabel.textAlignment = ALIGN_CENTER;
     _levelLabel.textColor = [UIColor whiteColor];
     _levelLabel.backgroundColor = [UIColor grayColor];
@@ -51,7 +51,7 @@
     [self.view addSubview:_levelLabel];
     
     // life label
-    _lifeLabel = [ [UILabel alloc ] initWithFrame:CGRectMake((screenSize.width/3)-1, 0.0f, screenSize.width/3, _headerHeight)];
+    _lifeLabel = [ [UILabel alloc ] initWithFrame:CGRectMake((screenSize.width/3)-2, 0.0f, (screenSize.width/3)+2, _headerHeight)];
     _lifeLabel.textAlignment = ALIGN_CENTER;
     _lifeLabel.textColor = [UIColor whiteColor];
     _lifeLabel.backgroundColor = [UIColor grayColor];
@@ -59,7 +59,7 @@
     [self.view addSubview:_lifeLabel];
     
     // score label
-    _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake((2*(screenSize.width/3))-1, 0.0f, (screenSize.width/3)+2, _headerHeight)];
+    _scoreLabel = [ [UILabel alloc ] initWithFrame:CGRectMake((2*(screenSize.width/3))-2, 0.0f, (screenSize.width/3)+2, _headerHeight)];
     _scoreLabel.textAlignment = ALIGN_CENTER;
     _scoreLabel.textColor = [UIColor whiteColor];
     _scoreLabel.backgroundColor = [UIColor grayColor];
@@ -183,7 +183,7 @@
             //NSLog(@"%lu", (unsigned long)[balls count]);
             Ball *currentBall = (Ball *) [_theMediator.balls objectAtIndex: i];
             glColor4f([currentBall color].red, [currentBall color].green, [currentBall color].blue, [currentBall color].alpha);
-            [GLDraw GLDrawCircleAtCenter:[currentBall position] segments:30 circleSize:[currentBall radius] filled:YES];
+            [GLDraw GLDrawCircleAtCenter:[currentBall position] segments:16.0f circleSize:[currentBall radius] filled:YES];
         }
     
         // bricks

@@ -80,7 +80,7 @@
     ballShapeDef.restitution = 1.0f;
     _ballBody->CreateFixture(&ballShapeDef);
     
-    b2Vec2 force = b2Vec2(0.0, -25.0);
+    b2Vec2 force = b2Vec2(0.0, -250.0f * _ballBody->GetMass());
     _ballBody->ApplyForce(force, ballBodyDef.position, true);
 }
 
@@ -209,15 +209,11 @@
         [temp setPosition:CGPointMake(ballPosition.x*PTM_RATIO, ballPosition.y*PTM_RATIO)];
     }
     
-    
-    const float accMultiplier = 60.0f;
-    b2Vec2 force = b2Vec2(accMultiplier * [_theMediator accX], 0.0f);
-    
     for (std::vector<int>::size_type i = 0; i != paddleBodies.size(); i++)
     {
         b2Body *body = paddleBodies.at(i);
         b2Vec2 paddlePosition = body->GetPosition();
-        body->ApplyForce(force, paddlePosition, true);
+        body->ApplyForce(b2Vec2(40.0f * [_theMediator accX] * body->GetMass(), 0.0f), paddlePosition, true);
         Paddle *temp = [[_theMediator paddles] objectAtIndex:i];
         [temp setPosition:CGPointMake(paddlePosition.x*PTM_RATIO, paddlePosition.y*PTM_RATIO)];
     }
@@ -239,7 +235,6 @@
             // detect ball hitting floor
             if ((contact.fixtureA == _bottomFixture && contact.fixtureB == ballFixture) ||
                 (contact.fixtureA == ballFixture && contact.fixtureB == _bottomFixture)) {
-                //NSLog(@"Ball hit bottom!");
                 
                 // loose a life
                 [_theMediator looseLife];
@@ -257,7 +252,6 @@
                         toDestroy.push_back(bodyB);
                     }
                 }
-                
                 
                 //Sprite A = block, Sprite B = ball
                 else if (contact.fixtureB == ballFixture && bodyA == body) {
@@ -296,6 +290,7 @@
             jl = jl->next;
         }
         
+        // DESTROYBODY DESTROYS THE BODY IN THE WORLD. IT'S POINTER DOES NOT GET REMOVED FROM THE VECTOR. SHOULD FIX THIS AS IT CAN CAUSE MEMORY LEAKS.
         _world->DestroyBody(body);
     }
 }
