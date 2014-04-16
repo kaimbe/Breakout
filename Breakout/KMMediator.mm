@@ -125,4 +125,9 @@
     physics = [[KMPhysicsController alloc] init];
 }
 
+- (void)resetBallPosition
+{
+    [physics resetBallPosition];
+}
+
 @end

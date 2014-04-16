@@ -304,4 +304,19 @@
     }
 }
 
+-(void)resetBallPosition
+{
+    for (std::vector<int>::size_type i = 0; i != ballBodies.size(); i++)
+    {
+        b2Body* ballBody = ballBodies.at(i);
+        
+        ballBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+        
+        ballBody->SetTransform(b2Vec2(_screenSize.width/2/PTM_RATIO, _screenSize.height/2/PTM_RATIO), 0.0f);
+        
+        b2Vec2 force = b2Vec2(0.0, -250.0f * ballBody->GetMass());
+        ballBody->ApplyForce(force, ballBody->GetPosition(), true);
+    }
+}
+
 @end

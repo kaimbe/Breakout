@@ -48,5 +48,6 @@
 - (void)updateLives;
 - (void)toggleTimer;
 - (void)resetPhysics;
+- (void)resetBallPosition;
 
 @end

@@ -33,7 +33,7 @@
     
     CGPoint ball_start_point = CGPointMake(_screenSize.width/2, _screenSize.height/2);
     
-    KMRGBColor *blue = [[KMRGBColor alloc] initWithRed:255.0f green:118.0f blue:0.0f alpha:255.0f];
+    KMRGBColor *blue = [[KMRGBColor alloc] initWithRed:70.0f green:70.0f blue:255.0f alpha:255.0f];
     KMRGBColor *lightGrey = [[KMRGBColor alloc] initWithRed:220.0f green:220.0f blue:220.0f alpha:255.0f];
     
     KMBall *aBall = [[KMBall alloc] initWithRadius: (_headerHeight * 0.5f) position:ball_start_point color:blue];
@@ -129,20 +129,29 @@
         _currentNumberOfLives--;
         [_theMediator updateLives];
         NSLog(@"Number of Lives Remaining: %d", _currentNumberOfLives);
+        
+        [_theMediator toggleTimer];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(fireLooseLifeDelay:) userInfo:nil repeats:NO];
     }
 }
 
 - (void)reset
 {
     [_theMediator toggleTimer];
-    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(fireLevelDelay:) userInfo:nil repeats:NO];
 }
 
-- (void)timerFireMethod:(NSTimer *)timer
+- (void)fireLevelDelay:(NSTimer *)timer
 {
     [_theMediator resetPhysics];
     [_theMediator setUpPhysicsController];
     [self setUpGameController];
+}
+
+- (void)fireLooseLifeDelay:(NSTimer *)timer
+{
+    [_theMediator toggleTimer];
+    [_theMediator resetBallPosition];
 }
 
 @end
