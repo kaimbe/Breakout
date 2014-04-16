@@ -1,5 +1,5 @@
 //
-//  Level0.m
+//  KMLevel1.m
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-12.
@@ -13,12 +13,14 @@
 
 @implementation KMLevel1
 
+// set up level 1. 8 rows, 3 columns, 5 lives.
 - (void)setUpLevel
 {
     const int numberOfRows = 8;
     const int numberOfBlocksPerRow = 3;
     const CGFloat brickHeight = self.headerHeight * 0.75f;
     
+    // define colors
     KMRGBColor *red = [[KMRGBColor alloc] initWithRed:255.0f green:0.0f blue:0.0f alpha:255.0f];
     KMRGBColor *orange = [[KMRGBColor alloc] initWithRed:255.0f green:150.0f blue:0.0f alpha:255.0f];
     KMRGBColor *yellow = [[KMRGBColor alloc] initWithRed:255.0f green:255.0f blue:0.0f alpha:255.0f];

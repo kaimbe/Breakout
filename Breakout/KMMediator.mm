@@ -1,5 +1,5 @@
 //
-//  Mediator.mm
+//  KMMediator.mm
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-12.
@@ -14,6 +14,8 @@
 
 @implementation KMMediator
 
+// singleton design pattern
+// this object only gets created once and can be referenced anywhere by calling this method
 + (id)sharedInstance
 {
     static KMMediator *sharedInstance = nil;

@@ -1,5 +1,5 @@
 //
-//  RGBColor.m
+//  KMRGBColor.m
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-12.

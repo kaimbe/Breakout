@@ -1,5 +1,5 @@
 //
-//  ContactListener.mm
+//  KMContactListener.mm
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-06.
@@ -31,10 +31,8 @@ void KMContactListener::EndContact(b2Contact* contact) {
     }
 }
 
-void KMContactListener::PreSolve(b2Contact* contact,
-                                 const b2Manifold* oldManifold) {
+void KMContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold) {
 }
 
-void KMContactListener::PostSolve(b2Contact* contact,
-                                  const b2ContactImpulse* impulse) {
+void KMContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse) {
 }

@@ -1,5 +1,5 @@
 //
-//  PhysicsController.mm
+//  KMPhysicsController.mm
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-06.
@@ -17,8 +17,10 @@
 
 - (void)setUpPhysicsController
 {
+    // get the mediator
     _theMediator = [KMMediator sharedInstance];
     
+    // start the timer
     [self toggleTimer];
     
     // Create a world
@@ -57,6 +59,7 @@
     NSLog(@"Physics Controller Loaded");
 }
 
+// creates a ball in the physics world
 - (void)createBallAtPosition:(CGPoint)position radius:(CGFloat)radius
 {
     // Create ball body
@@ -83,6 +86,7 @@
     _ballBody->ApplyForce(force, ballBodyDef.position, true);
 }
 
+// creates a paddle in the physics world
 - (void)createPaddleAtPosition:(CGPoint)position width:(CGFloat)width height:(CGFloat)height
 {
     // Create paddle body
@@ -114,6 +118,7 @@
     
 }
 
+// creates a block in the physics world
 - (void)createBlockAtPosition:(CGPoint)position width:(CGFloat)width height:(CGFloat)height
 {
     // Create block body
@@ -137,6 +142,7 @@
     _blockBody->CreateFixture(&blockShapeDef);
 }
 
+// touches began enables the mousejoint for the paddle
 - (void)touchesBeganPhysics:(CGPoint)touchPoint
 {
     if (_mouseJoint != NULL) return;
@@ -161,6 +167,7 @@
     }
 }
 
+// touches moved. update the position of the paddle
 - (void)touchesMovedPhysics:(CGPoint)touchPoint
 {
     if (_mouseJoint == NULL) return;
@@ -169,6 +176,7 @@
     _mouseJoint->SetTarget(locationWorld);
 }
 
+// touches ended. destroy the mousejoint so that the paddle can move again
 - (void)touchesEndedPhysics:(CGPoint)touchPoint
 {
     // destroy joint
@@ -179,16 +187,19 @@
     }
 }
 
+// this method is called by the timer
 - (void) physicsTick:(NSTimer *)timer
 {
+    // create the stepping in the physics world
     float timeStep = 1.0f / 60.0f;
     int velocityIterations = 1;
     int positionIterations = 2;
     _world->Step(timeStep, velocityIterations, positionIterations);
     
+    // maximum speed of a ball
     const float maxSpeed = 15.0f;
     
-    // balls
+    // check the max speed of the balls and update the position of the balls in the graphics world
     for (std::vector<int>::size_type i = 0; i != ballBodies.size(); i++)
     {
         b2Body* body = ballBodies.at(i);
@@ -200,11 +211,13 @@
         } else if (speed < maxSpeed) {
             body->SetLinearDamping(0.0);
         }
+        
         b2Vec2 ballPosition = body->GetPosition();
         KMBall *temp = [[_theMediator balls] objectAtIndex:i];
         [temp setPosition:CGPointMake(ballPosition.x*PTM_RATIO, ballPosition.y*PTM_RATIO)];
     }
     
+    // update the position of the paddles in the graphics world
     for (std::vector<int>::size_type i = 0; i != paddleBodies.size(); i++)
     {
         b2Body *body = paddleBodies.at(i);
@@ -260,7 +273,7 @@
         }
     }
     
-    // destroy the blocks that have been hit
+    // destroy all the blocks that have been hit
     std::vector<b2Body *>::iterator pos2;
     for (pos2 = toDestroy.begin(); pos2 != toDestroy.end(); ++pos2) {
         b2Body *body = *pos2;
@@ -273,7 +286,6 @@
         
         while (jl)
         {
-            NSLog(@"del 1");
             b2Joint* j = jl->joint;
             
             if (j == _mouseJoint)
@@ -287,10 +299,12 @@
         }
         
         // DESTROYBODY DESTROYS THE BODY IN THE WORLD. IT'S POINTER DOES NOT GET REMOVED FROM THE VECTOR. SHOULD FIX THIS AS IT CAN CAUSE MEMORY LEAKS.
+        // This is only an issue if the vector needs to be referenced in the future
         _world->DestroyBody(body);
     }
 }
 
+// enable or disable the timer
 - (void)toggleTimer
 {
     if (_theTimer == nil) {
@@ -304,6 +318,7 @@
     }
 }
 
+// reset the position of the ball to the center of the screen and give it an inital force
 -(void)resetBallPosition
 {
     for (std::vector<int>::size_type i = 0; i != ballBodies.size(); i++)

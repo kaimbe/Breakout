@@ -1,5 +1,5 @@
 //
-//  PhysicsController.h
+//  KMPhysicsController.h
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-06.
@@ -40,6 +40,6 @@
 - (void)touchesMovedPhysics:(CGPoint) touchPoint;
 - (void)touchesEndedPhysics:(CGPoint)touchPoint;
 - (void)toggleTimer;
--(void)resetBallPosition;
+- (void)resetBallPosition;
 
 @end

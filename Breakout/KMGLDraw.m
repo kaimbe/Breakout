@@ -1,5 +1,5 @@
 //
-//  GLDraw.m
+//  KMGLDraw.m
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-06.
@@ -10,6 +10,7 @@
 
 @implementation KMGLDraw
 
+// draw an ellipse
 + (void) GLDrawEllipseAtCenter:(CGPoint)center segments:(NSInteger)segments width:(CGFloat)width height:(CGFloat)height filled:(BOOL)filled {
     glPushMatrix();
     glTranslatef(center.x, center.y, 0.0);
@@ -23,15 +24,16 @@
     }
 
     glVertexPointer (2, GL_FLOAT , 0, vertices);
-    //glTexCoordPointer(2, GL_FLOAT, 0, tex);
     glDrawArrays ((filled) ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0, segments);
     glPopMatrix();
 }
 
+// draw a circle
 + (void) GLDrawCircleAtCenter:(CGPoint)center segments:(NSInteger)segments circleSize:(CGFloat)circleSize filled:(BOOL) filled {
     [self GLDrawEllipseAtCenter:center segments:segments width:circleSize height:circleSize filled:filled];
 }
 
+// draw a rectangle
 + (void) GLDrawRectangleAtCenter:(CGPoint) center width:(GLfloat) width height:(GLfloat) height filled:(BOOL) filled {
     GLfloat neg_x = center.x - (width/2);
     GLfloat neg_y = center.y - (height/2);

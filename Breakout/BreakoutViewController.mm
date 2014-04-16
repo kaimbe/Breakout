@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  BreakoutViewController.mm
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-01.
@@ -25,7 +25,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-    	
+    
+    // setup opengl
 	self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
     
 	if (!self.context) {
@@ -68,6 +69,7 @@
     _scoreLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(_headerHeight*textPercent)];
     [self.view addSubview:_scoreLabel];
     
+    // get the mediator and set some properties
     _theMediator = [KMMediator sharedInstance];
     [_theMediator setView:self];
     [_theMediator setScreenSize:_screenSize];
@@ -102,7 +104,7 @@
 		self.context = nil;
 	}
     
-	// Dispose of any resources that can be recreated.
+	// Dispose of any resources that can be recreated
 }
 
 - (void)update
@@ -114,6 +116,7 @@
 {
 	[EAGLContext setCurrentContext:self.context];
     
+    // load the texture files
     _textures = [[ImageTextures alloc] initNumTexture:3];
     [_textures loadTextureAt:2 from:@"silver-diamond-plate_small.png"];
     [_textures loadTextureAt:1 from:@"block_small.png"];
@@ -166,21 +169,13 @@
     [_theMediator touchesEndedPhysics:touch_point];
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // get the touch point and fix coordinates
-    CGPoint touch_point = [[touches anyObject] locationInView:self.view];
-    touch_point.y = _screenSize.height - touch_point.y;
-    touch_point = CGPointMake(touch_point.x, touch_point.y);
-}
-
 #pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
 	// clear the rendering buffer
 	glClear(GL_COLOR_BUFFER_BIT);
-	// enable the vertex array rendering
+	// enable the vertex array rendering and texture
 	glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
     
@@ -188,35 +183,37 @@
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
     
+    // bind ball texture
     //[_textures bindTextureAt: 0];
     // draw and dispaly the balls
-        for(int i = 0; i < [_theMediator.balls count]; i++) {
-            //NSLog(@"%lu", (unsigned long)[balls count]);
-            KMBall *currentBall = (KMBall *) [_theMediator.balls objectAtIndex: i];
-            glColor4f([currentBall color].red, [currentBall color].green, [currentBall color].blue, [currentBall color].alpha);
-            [KMGLDraw GLDrawCircleAtCenter:[currentBall position] segments:16.0f circleSize:[currentBall radius] filled:YES];
-        }
+    for(int i = 0; i < [_theMediator.balls count]; i++) {
+        KMBall *currentBall = (KMBall *) [_theMediator.balls objectAtIndex: i];
+        glColor4f([currentBall color].red, [currentBall color].green, [currentBall color].blue, [currentBall color].alpha);
+        [KMGLDraw GLDrawCircleAtCenter:[currentBall position] segments:16.0f circleSize:[currentBall radius] filled:YES];
+    }
     
+    // bind block texure
     [_textures bindTextureAt: 1];
     // blocks
-        for(int i = 0; i < [_theMediator.blocks count]; i++) {
-            KMBlock *currentBlock = (KMBlock *) [_theMediator.blocks objectAtIndex: i];
-            glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
-            [KMGLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
-        }
+    for(int i = 0; i < [_theMediator.blocks count]; i++) {
+        KMBlock *currentBlock = (KMBlock *) [_theMediator.blocks objectAtIndex: i];
+        glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
+        [KMGLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
+    }
+    
+    // bind paddle texture
     [_textures bindTextureAt: 2];
     // paddles
-        for(int i = 0; i < [_theMediator.paddles count]; i++) {
-            KMPaddle *currentPaddle = (KMPaddle *) [_theMediator.paddles objectAtIndex: i];
-            glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);
-            [KMGLDraw GLDrawRectangleAtCenter:[currentPaddle position] width:[currentPaddle size].width height:[currentPaddle size].height filled:YES];
-        }
+    for(int i = 0; i < [_theMediator.paddles count]; i++) {
+        KMPaddle *currentPaddle = (KMPaddle *) [_theMediator.paddles objectAtIndex: i];
+        glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);
+        [KMGLDraw GLDrawRectangleAtCenter:[currentPaddle position] width:[currentPaddle size].width height:[currentPaddle size].height filled:YES];
+    }
     
-    
+    // disable
     glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisable(GL_TEXTURE_2D);
-     
 }
 
 @end

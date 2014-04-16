@@ -1,5 +1,5 @@
 //
-//  GameController.h
+//  KMGameController.h
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-10.
@@ -13,8 +13,8 @@
 
 @interface KMGameController : NSObject
 {
-    KMLevel* _currentLevel;
-    KMMediator* _theMediator;
+    KMLevel *_currentLevel;
+    KMMediator *_theMediator;
 }
 
 @property (nonatomic) CGSize screenSize;
@@ -27,6 +27,6 @@
 - (void)setUpGameController;
 - (void)removeBlockAtPosition:(CGPoint)position;
 - (void)looseLife;
-- (void)reset;
+- (void)resetLevel;
 
 @end

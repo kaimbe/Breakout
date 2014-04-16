@@ -1,5 +1,5 @@
 //
-//  MotionController.m
+//  KMMotionController.m
 //  Breakout
 //
 //  Created by Matthew Newell on 2014-04-06.
@@ -25,20 +25,12 @@
     NSLog(@"Motion Controller Loaded");
 }
 
+// gets the X directon acceleration data from the acceleromter and uses a simple low-pass filter
 -(void)updateAcceleration:(CMAcceleration)acceleration
 {
-    // filter
     float alpha = 0.1;
     avgX = alpha*acceleration.x + (1-alpha)*avgX;
-    
     _accX = acceleration.x - avgX;
-    //_accX = acceleration.x;
-    
-    // raw
-    //NSLog(@"%f", acceleration.x);
-    
-    // filtered
-     //NSLog(@"%f", _accX);
     
     [theMediator updateAccelerationX:_accX];
 }

@@ -1,5 +1,5 @@
 //
-//  Constants.h
+//  KMConstants.h
 //  TemplateOpenGL
 //
 //  Created by Matthew Newell on 2014-03-11.

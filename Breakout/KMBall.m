@@ -1,6 +1,6 @@
 //
-//  Ball.m
-//  TemplateOpenGL
+//  KMBall.m
+//  Breakout
 //
 //  Created by Matthew Newell on 2014-03-11.
 //  Copyright (c) 2014 Minglun Gong. All rights reserved.
