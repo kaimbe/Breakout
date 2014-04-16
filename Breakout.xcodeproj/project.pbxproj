@@ -86,9 +86,9 @@
 		BF6E09F118FAF3B500F78067 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E09F018FAF3B500F78067 /* GLKit.framework */; };
 		BF6E09F318FAF3C000F78067 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E09F218FAF3C000F78067 /* OpenGLES.framework */; };
 		BF7642AB18FD633C00EEABFE /* KMLevel2.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7642AA18FD633C00EEABFE /* KMLevel2.m */; };
-		BF95050E18FDF72F00D54E33 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = BF95050D18FDF72F00D54E33 /* block.png */; };
-		BF95051018FDF8D000D54E33 /* silver-diamond-plate.png in Resources */ = {isa = PBXBuildFile; fileRef = BF95050F18FDF8D000D54E33 /* silver-diamond-plate.png */; };
 		BF95051218FE023400D54E33 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = BF95051118FE023400D54E33 /* ball.png */; };
+		BF95051418FEA2D800D54E33 /* block_small.png in Resources */ = {isa = PBXBuildFile; fileRef = BF95051318FEA2D800D54E33 /* block_small.png */; };
+		BF95051618FEA3EF00D54E33 /* silver-diamond-plate_small.png in Resources */ = {isa = PBXBuildFile; fileRef = BF95051518FEA3EF00D54E33 /* silver-diamond-plate_small.png */; };
 		BF95185D18FB1DD200C719B5 /* KMSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = BF95185C18FB1DD200C719B5 /* KMSprite.m */; };
 		BF95186E18FB23B300C719B5 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF95186A18FB23B300C719B5 /* MainStoryboard_iPad.storyboard */; };
 		BF95186F18FB23B300C719B5 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF95186C18FB23B300C719B5 /* MainStoryboard_iPhone.storyboard */; };
@@ -251,9 +251,9 @@
 		BF6E09F218FAF3C000F78067 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF7642A918FD633C00EEABFE /* KMLevel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLevel2.h; sourceTree = "<group>"; };
 		BF7642AA18FD633C00EEABFE /* KMLevel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLevel2.m; sourceTree = "<group>"; };
-		BF95050D18FDF72F00D54E33 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
-		BF95050F18FDF8D000D54E33 /* silver-diamond-plate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "silver-diamond-plate.png"; sourceTree = "<group>"; };
 		BF95051118FE023400D54E33 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		BF95051318FEA2D800D54E33 /* block_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_small.png; sourceTree = "<group>"; };
+		BF95051518FEA3EF00D54E33 /* silver-diamond-plate_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "silver-diamond-plate_small.png"; sourceTree = "<group>"; };
 		BF95185B18FB1DD200C719B5 /* KMSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSprite.h; sourceTree = "<group>"; };
 		BF95185C18FB1DD200C719B5 /* KMSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSprite.m; sourceTree = "<group>"; };
 		BF95186B18FB23B300C719B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
@@ -511,9 +511,9 @@
 		BF6E08FF18FAEF6200F78067 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BF95050F18FDF8D000D54E33 /* silver-diamond-plate.png */,
+				BF95051518FEA3EF00D54E33 /* silver-diamond-plate_small.png */,
 				BF95051118FE023400D54E33 /* ball.png */,
-				BF95050D18FDF72F00D54E33 /* block.png */,
+				BF95051318FEA2D800D54E33 /* block_small.png */,
 				BF95186A18FB23B300C719B5 /* MainStoryboard_iPad.storyboard */,
 				BF95186C18FB23B300C719B5 /* MainStoryboard_iPhone.storyboard */,
 				BF6E090018FAEF6200F78067 /* Breakout-Info.plist */,
@@ -662,10 +662,10 @@
 				BF95186F18FB23B300C719B5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BF35E1D218FB12ED00E698AA /* CMakeLists.txt in Resources */,
 				BF95051218FE023400D54E33 /* ball.png in Resources */,
-				BF95050E18FDF72F00D54E33 /* block.png in Resources */,
 				BF6E090318FAEF6200F78067 /* InfoPlist.strings in Resources */,
-				BF95051018FDF8D000D54E33 /* silver-diamond-plate.png in Resources */,
+				BF95051418FEA2D800D54E33 /* block_small.png in Resources */,
 				BF6E090B18FAEF6200F78067 /* Images.xcassets in Resources */,
+				BF95051618FEA3EF00D54E33 /* silver-diamond-plate_small.png in Resources */,
 				BF35E1D118FB12ED00E698AA /* Box2DConfig.cmake in Resources */,
 				BF95186E18FB23B300C719B5 /* MainStoryboard_iPad.storyboard in Resources */,
 			);

@@ -115,8 +115,8 @@
 	[EAGLContext setCurrentContext:self.context];
     
     _textures = [[ImageTextures alloc] initNumTexture:3];
-    [_textures loadTextureAt:2 from:@"silver-diamond-plate.png"];
-    [_textures loadTextureAt:1 from:@"block.png"];
+    [_textures loadTextureAt:2 from:@"silver-diamond-plate_small.png"];
+    [_textures loadTextureAt:1 from:@"block_small.png"];
 	//[_textures loadTextureAt:0 from:@"ball.png"];
 }
 
