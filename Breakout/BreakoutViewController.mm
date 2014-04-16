@@ -114,9 +114,10 @@
 {
 	[EAGLContext setCurrentContext:self.context];
     
-    _textures = [[ImageTextures alloc] initNumTexture:2];
-    [_textures loadTextureAt:1 from:@"brick.png"];
-	[_textures loadTextureAt:0 from:@"glossyBall.png"];
+    _textures = [[ImageTextures alloc] initNumTexture:3];
+    [_textures loadTextureAt:2 from:@"silver-diamond-plate.png"];
+    [_textures loadTextureAt:1 from:@"block.png"];
+	//[_textures loadTextureAt:0 from:@"ball.png"];
 }
 
 - (void)tearDownGL
@@ -187,7 +188,7 @@
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
     
-    [_textures bindTextureAt: 0];
+    //[_textures bindTextureAt: 0];
     // draw and dispaly the balls
         for(int i = 0; i < [_theMediator.balls count]; i++) {
             //NSLog(@"%lu", (unsigned long)[balls count]);
@@ -197,14 +198,14 @@
         }
     
     [_textures bindTextureAt: 1];
-    // bricks
+    // blocks
         for(int i = 0; i < [_theMediator.blocks count]; i++) {
             KMBlock *currentBlock = (KMBlock *) [_theMediator.blocks objectAtIndex: i];
             glColor4f([currentBlock color].red, [currentBlock color].green, [currentBlock color].blue, [currentBlock color].alpha);
             [KMGLDraw GLDrawRectangleAtCenter:[currentBlock position] width:[currentBlock size].width height:[currentBlock size].height filled:YES];
         }
-    
-        // paddles
+    [_textures bindTextureAt: 2];
+    // paddles
         for(int i = 0; i < [_theMediator.paddles count]; i++) {
             KMPaddle *currentPaddle = (KMPaddle *) [_theMediator.paddles objectAtIndex: i];
             glColor4f([currentPaddle color].red, [currentPaddle color].green, [currentPaddle color].blue, [currentPaddle color].alpha);

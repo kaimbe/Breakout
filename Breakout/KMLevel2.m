@@ -17,7 +17,7 @@
 {
     const int numberOfRows = 8;
     const int numberOfBlocksPerRow = 4;
-    const CGFloat brickHeight = 15.0f;
+    const CGFloat brickHeight = self.headerHeight * 0.75f;
     
     KMRGBColor *red = [[KMRGBColor alloc] initWithRed:255.0f green:0.0f blue:0.0f alpha:255.0f];
     KMRGBColor *orange = [[KMRGBColor alloc] initWithRed:255.0f green:150.0f blue:0.0f alpha:255.0f];

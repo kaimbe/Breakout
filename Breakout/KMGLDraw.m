@@ -14,15 +14,16 @@
     glPushMatrix();
     glTranslatef(center.x, center.y, 0.0);
     GLfloat vertices[segments*2];
+    
     int count=0;
     for (GLfloat i = 0; i < 360.0f; i+=(360.0f/segments))
     {
-        vertices[count++] = (cos(DEGREES_TO_RADIANS(i))*width);
-        vertices[count++] = (sin(DEGREES_TO_RADIANS(i))*height);
+        vertices[count++] = cosf(DEGREES_TO_RADIANS(i))*width;
+        vertices[count++] = sinf(DEGREES_TO_RADIANS(i))*height;
     }
-    
+
     glVertexPointer (2, GL_FLOAT , 0, vertices);
-    glTexCoordPointer(2, GL_FLOAT, 0, vertices);
+    //glTexCoordPointer(2, GL_FLOAT, 0, tex);
     glDrawArrays ((filled) ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0, segments);
     glPopMatrix();
 }
@@ -49,7 +50,7 @@
         neg_x, neg_y
     };
     
-    const GLfloat single_map[] = {
+    const GLfloat tex[] = {
         0.5, 0.5,
         0.0, 0.0,
         0.0, 1.0,
@@ -61,7 +62,7 @@
     glPushMatrix();
     //glTranslatef(center.x, center.y, 0.0);
     glVertexPointer (2, GL_FLOAT , 0, vertices);
-    glTexCoordPointer(2, GL_FLOAT, 0, single_map);
+    glTexCoordPointer(2, GL_FLOAT, 0, tex);
     
     glDrawArrays((filled) ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0, 6);
     glPopMatrix();
